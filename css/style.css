@@ -1,0 +1,67 @@
+.blue-theme {
+	background: #3D7AAE;
+	color: white;
+}
+
+.bg-light-blue {
+	background: #E9EAED;
+}
+
+.height-30px {
+	height: 30px;
+}
+
+.center {
+	text-align: center;
+}
+
+.center-image {
+	display: block;
+	margin-left: auto;
+	margin-right: auto
+}
+
+.full-width {
+	width: 100%;
+}
+
+.no-padding {
+	padding: 0px 0px 0px 0px;
+}
+
+.no-margin {
+	margin: 0px 0px 0px 0px;
+}
+
+.center-vertical {
+	vertical-align: middle;
+}
+
+.bottom {
+	bottom: 10px;
+}
+
+.ellipsis {
+	text-overflow: ellipsis;
+	/* Required for text-overflow to do anything */
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.notification {
+	width: 200px;
+	height: auto;
+	position: fixed;
+	left: 50%;
+	margin-left: -100px;
+	bottom: 10px;
+	background-color: #383838;
+	color: #F0F0F0;
+	padding: 10px;
+	z-index: 10;
+	text-align: center;
+	border-radius: 2px;
+	text-align: center;
+}
+
+@CHARSET "ISO-8859-1";
