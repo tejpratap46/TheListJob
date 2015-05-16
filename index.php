@@ -41,6 +41,7 @@ error_reporting ( 0 );
 					<li><a href="movies">Movies</a></li>
 					<li><a href="tv">Tv Shows</a></li>
 					<li><a href="music">Music</a></li>
+					<li><a href="podcast">Podcast</a></li>
 					<!-- 					<form class="navbar-form navbar-left" role="search"> -->
 					<!-- 						<div class="form-group"> -->
 					<!-- 							<input type="text" class="form-control" placeholder="Search"> -->
@@ -51,7 +52,7 @@ error_reporting ( 0 );
 				<ul class="nav navbar-nav navbar-right">
 				<?php
 				if ($_COOKIE ['tljusername']) {
-					echo "<li class='dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-expanded='false'>" . $_COOKIE ['ifiusername'] . "<span class='caret'></span></a>";
+					echo "<li class='dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-expanded='false'>" . $_COOKIE ['tljusername'] . "<span class='caret'></span></a>";
 					echo "<ul class='dropdown-menu' role='menu'>";
 					echo "<li><a href='#'>Profile</a></li>";
 					echo "<li class='divider'></li>";
@@ -72,12 +73,12 @@ error_reporting ( 0 );
 	<div class="container" style="width: 100%; margin-top: 70px;">
 		<!-- Main component for a primary marketing message or call to action -->
 		<div class="jumbotron blue-theme">
-			<h1>The List Job</h1>
+			<h1 class="bold">The List Job</h1>
 			<p>Great Stuff To Do Next.</p>
 		</div>
 		<div class="jumbotron">
 			<div class="row">
-				<div class="col-sm-6 col-md-4">
+				<div class="col-sm-6 col-md-3">
 					<a href="movies"><div class="thumbnail">
 						<img style="width: 100%;" src="images/movie-512.png" alt="Movies">
 						<div class="caption">
@@ -86,7 +87,7 @@ error_reporting ( 0 );
 						</div>
 					</div></a>
 				</div>
-				<div class="col-sm-6 col-md-4">
+				<div class="col-sm-6 col-md-3">
 					<a href="tv"><div class="thumbnail">
 						<img style="width: 100%;" src="images/tv-512.png" alt="TV Show">
 						<div class="caption">
@@ -95,12 +96,21 @@ error_reporting ( 0 );
 						</div>
 					</div></a>
 				</div>
-				<div class="col-sm-6 col-md-4">
+				<div class="col-sm-6 col-md-3">
 					<a href="music"><div class="thumbnail">
 						<img style="width: 100%;" src="images/music-512.png" alt="Music">
 						<div class="caption">
 							<h2 class="center">Music Lists</h2>
 							<p class="center ellipsis">Collection Of Awsome Music For You.</p>
+						</div>
+					</div></a>
+				</div>
+				<div class="col-sm-6 col-md-3">
+					<a href="podcast"><div class="thumbnail">
+						<img style="width: 100%;" src="images/podcast-512.png" alt="Podcast">
+						<div class="caption">
+							<h2 class="center">Podcast Lists</h2>
+							<p class="center ellipsis">Collection Of Awsome Podcasts For You.</p>
 						</div>
 					</div></a>
 				</div>

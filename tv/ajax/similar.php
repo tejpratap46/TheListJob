@@ -6,7 +6,7 @@ $tmdb = new TMDb ( 'c2c73ebd1e25cbc29cf61158c04ad78a' );
 $config = $tmdb->getConfig ();
 if ($_GET ['i']) {
 	$Movies = $tmdb->getSimilarTv ( $_GET ['i'] );
-	echo '<h2>Similar Shows</h2>';
+	echo '<h2 class="bold">Similar Shows</h2>';
 	for($i = 0; $i < count ( $Movies ['results'] ); $i ++) {
 		if ($i % 4 == 0) {
 			echo '<div class="row">';

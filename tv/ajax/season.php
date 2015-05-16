@@ -33,22 +33,18 @@ function showEpisodes($Movie) {
 	for($i = 0; $i < count ( $Movie ['episodes'] ); $i ++) {
 		echo '<a href="episode.php?i='.$_GET['i'].'&s=' . $Movie ['episodes'] [$i] ['season_number'] . '&e=' . $Movie ['episodes'] [$i] ['episode_number'] . '">
 				<div class="jumbotron no-padding" style="padding-left: 0px; padding-right: 0px; overflow: hidden;">
-				<div class="row" style="padding:10px;">
-					<div class="col-md-12">
-						<h1>' . $Movie ['episodes'] [$i] ['name'] . ' (S' . $Movie ['episodes'] [$i] ['season_number'] . ' E' . $Movie ['episodes'] [$i] ['episode_number'] . ')</h1>
+					<div class="row">
+						<div class="col-md-4">
+						<img class="center-image full-width full-height" alt="' . $Movie ['episodes'] [$i] ['name'] . '"
+								src="http://image.tmdb.org/t/p/w185' . $Movie ['episodes'] [$i] ['still_path'] . '">
+						</div>
+						<div class="col-md-8">
+							<h1 class="ellipsis">' . $Movie ['episodes'] [$i] ['name'] . ' (S' . $Movie ['episodes'] [$i] ['season_number'] . ' E' . $Movie ['episodes'] [$i] ['episode_number'] . ')</h1>
+							<p>' . $Movie ['episodes'] [$i] ['overview'] . '</p>
+						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-4">
-					<img class="center-image full-width" alt="' . $Movie ['episodes'] [$i] ['name'] . '"
-							src="http://image.tmdb.org/t/p/w185' . $Movie ['episodes'] [$i] ['still_path'] . '">
-					</div>
-					<div class="col-md-8">
-						<p>' . $Movie ['episodes'] [$i] ['overview'] . '</p>
-					</div>
-				</div>
-			</div>
-		</a>';
+			</a>';
 	}
 }
 ?>

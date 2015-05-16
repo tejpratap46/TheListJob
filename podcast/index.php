@@ -11,7 +11,7 @@ error_reporting ( 0 );
 <meta name="author" content="">
 <link rel="icon" href="favicon.ico">
 
-<title>TV WatchList</title>
+<title>Music List</title>
 
 <!-- Bootstrap core CSS -->
 <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -39,9 +39,9 @@ error_reporting ( 0 );
 				<ul class="nav navbar-nav">
 					<li><a href="../">Home</a></li>
 					<li><a href="../movies">Movies</a></li>
-					<li class="active"><a href="../tv">Tv Shows</a></li>
+					<li><a href="../tv">Tv Shows</a></li>
 					<li><a href="../music">Music</a></li>
-					<li><a href="../podcast">Podcast</a></li>
+					<li class="active"><a href="../podcast">Podcast</a></li>
 					<form class="navbar-form navbar-left" role="search" action="search.php">
 						<div class="form-group">
 							<input type="text" class="form-control" placeholder="Search" name="q" value="<?php echo $_GET['q']?>">
@@ -69,18 +69,22 @@ error_reporting ( 0 );
 		</div>
 	</nav>
 
-	<div class="container" style="width: 100%; margin-top: 70px;" id="info">
-		<img class="center-image" alt="loading..." src="../images/loading.gif">
+	<div class="container" style="width: 100%; margin-top: 70px;">
+		<!-- Main component for a primary marketing message or call to action -->
+		<div class="jumbotron blue-theme">
+			<h1 class="bold">Top Podcast</h1>
+			<p>Modern Day Radio.</p>
+		</div>
+		<div class="jumbotron">
+			<div class="row" id="items"></div>
+		</div>
+		<div class="jumbotron" id="loading">
+			<div class="row" id="items">
+				<img class="center-image" alt="loading..."
+					src="../images/loading.gif">
+			</div>
+		</div>
 	</div>
-	
-	<div class="container" style="width: 100%;">
-	<div class="jumbotron">
-		<div class="row" id="items"></div>
-	</div>
-	</div>
-	
-	<div class='notification' style='display: none'>Loading...</div>
-
 	<!-- /container -->
 	<!-- Bootstrap core JavaScript
     ================================================== -->
@@ -90,16 +94,10 @@ error_reporting ( 0 );
 	<script src="../js/bootstrap.min.js"></script>
 
 	<script type="text/javascript">
+	var q = getParameterByName('i');
 	setTimeout(function () {
-	var i = getParameterByName('i');
-	var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-        	document.getElementById("info").innerHTML = xmlhttp.responseText;
-        }
-    }
-    xmlhttp.open("GET", "ajax/info.php?i=" + i, true);
-    xmlhttp.send();
+		$("#loading").toggle(100);
+		ajaxCall();
 	}, 50);
 
 	function getParameterByName(name) {
@@ -108,39 +106,20 @@ error_reporting ( 0 );
 	        results = regex.exec(location.search);
 	    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 	}
-
-	function getTrailer(){
-		var i = getParameterByName('i');
-		$('.notification').toggle();
+	
+	function ajaxCall(){
+		$("#loading").toggle(100);
 		var xmlhttp = new XMLHttpRequest();
 	    xmlhttp.onreadystatechange = function() {
 	        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-	        	$('.notification').toggle();
-	        	document.getElementById("trailer").innerHTML = xmlhttp.responseText;
-	        }	    }
-	    xmlhttp.open("GET", "ajax/trailer.php?i=" + i, true);
+	        	var pre = document.getElementById("items").innerHTML;
+	        	document.getElementById("items").innerHTML =pre +  xmlhttp.responseText;
+	        	$("#loading").toggle(100);
+	        }
+	    }
+	    xmlhttp.open("GET", "ajax/top.php", true);
 	    xmlhttp.send();
 	}
-
-	var sim = false;
-	
-	$(window).scroll(function() {
-	   if($(window).scrollTop() + $(window).height() == $(document).height()) {
-		   if(!sim){
-		   var i = getParameterByName('i');
-		   $('.notification').toggle();
-			var xmlhttp = new XMLHttpRequest();
-		    xmlhttp.onreadystatechange = function() {
-		        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-		        	$('.notification').toggle();
-		        	document.getElementById("items").innerHTML = xmlhttp.responseText;
-		        }	    }
-		    xmlhttp.open("GET", "ajax/similar.php?i=" + i, true);
-		    xmlhttp.send();
-		    sim = true;
-	   }
-	   }
-	});
 	</script>
 </body>
 </html>

@@ -6,10 +6,10 @@ $tmdb = new TMDb ( 'c2c73ebd1e25cbc29cf61158c04ad78a' );
 $config = $tmdb->getConfig ();
 if ($_GET ['i']) {
 	$Movie = $tmdb->getMovie ( $_GET ['i'] );
-	echo '<div class="jumbotron no-padding">
+	echo '<div class="jumbotron no-padding blue-theme">
 			<div class="row">
 				<div class="col-md-12">
-					<h1 class="center-vertical">' . $Movie ['title'] . '</h1>
+					<h1 class="center bold">' . $Movie ['title'] . '</h1>
 				</div>
 			</div>
 		</div>
@@ -58,39 +58,47 @@ if ($_GET ['i']) {
 	getGenre ( $Movie );
 	echo '</div>
 				<div class="col-md-3">
-				<h1 class="center-vertical ellipsis">Production</h1><br />';
+				<h1 class="center-vertical ellipsis bold">Production</h1><br />';
 	getProduction ( $Movie );
 	echo '</div>
 				<div class="col-md-3">
-				<h1 class="center-vertical ellipsis">Countries</h1><br />';
+				<h1 class="center-vertical ellipsis bold">Countries</h1><br />';
 	getCountries ( $Movie );
 	echo '</div>
 				<div class="col-md-3">
-				<h1 class="center-vertical ellipsis">Extra</h1><br />';
+				<h1 class="center-vertical ellipsis bold">Extra</h1><br />';
 	getExtra ( $Movie );
 	echo '</div>
 			</div>
 		</div>';
 }
 function getGenre($Movie) {
+	echo '<div class="thumbnail">';
 	for($i = 0; $i < count ( $Movie ['genres'] ); $i ++) {
 		echo '<a href="genre.php?t=' . $Movie ['genres'] [$i] ['id'] . '"><h4 class="no-padding no-margin">' . ($i + 1) . ". " . $Movie ['genres'] [$i] ['name'] . '</h4></a><br />';
 	}
+	echo "</div>";
 }
 function getProduction($Movie) {
+	echo '<div class="thumbnail">';
 	for($i = 0; $i < count ( $Movie ['production_companies'] ); $i ++) {
 		echo '<h4 class="no-padding no-margin">' . ($i + 1) . ". " . $Movie ['production_companies'] [$i] ['name'] . '</h4><br />';
 	}
+	echo "</div>";
 }
 function getCountries($Movie) {
+	echo '<div class="thumbnail">';
 	for($i = 0; $i < count ( $Movie ['production_countries'] ); $i ++) {
 		echo '<h4 class="no-padding no-margin">' . ($i + 1) . ". " . $Movie ['production_countries'] [$i] ['name'] . '</h4><br />';
 	}
+	echo "</div>";
 }
 function getExtra($Movie) {
+	echo '<div class="thumbnail">';
 	echo '<h3>' . $Movie ['runtime'] . 'min</h3>';
 	echo '<h3>' . $Movie ['budget'] . '$ spent</h3>';
 	echo '<h3>' . $Movie ['revenue'] . '$ revenue</h3>';
 	echo '<a href ="' . $Movie ['homepage'] . '"><h3>Website</h3></a>';
+	echo "</div>";
 }
 ?>

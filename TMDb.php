@@ -22,7 +22,7 @@ class TMDb {
 	const API_VERSION = '3';
 	const API_URL = 'api.themoviedb.org';
 	const API_SCHEME = 'http://';
-	const API_SCHEME_SSL = 'https://';
+	const API_SCHEME_SSL = 'http://';
 	const VERSION = '1.5.0';
 	
 	/**

@@ -6,8 +6,15 @@ $tmdb = new TMDb ( 'c2c73ebd1e25cbc29cf61158c04ad78a' );
 $config = $tmdb->getConfig ();
 if ($_GET ['i']) {
 	$Movie = $tmdb->getTv ( $_GET ['i'] );
-	echo '<div class="jumbotron no-padding" style="padding-left: 0px; padding-right: 0px; overflow: hidden;">
-			<img class="center-image full-width" alt="' . $Movie ['title'] . '"
+	echo '<div class="jumbotron no-padding blue-theme">
+			<div class="row">
+				<div class="col-md-12">
+					<h1 class="center bold">' . $Movie ['name'] . '</h1>
+				</div>
+			</div>
+		</div>
+		<div class="jumbotron no-padding" style="padding-left: 0px; padding-right: 0px; overflow: hidden;">
+			<img class="center-image full-width" alt="' . $Movie ['name'] . '"
 					src="http://image.tmdb.org/t/p/w780' . $Movie ['backdrop_path'] . '">
 		</div>
 		<div class="jumbotron no-padding" style="padding-left: 0px; padding-right: 0px;">
@@ -19,7 +26,7 @@ if ($_GET ['i']) {
 				<div class="col-md-3 center">
 				<h1 style="font-size: 10em;"><strong>' . $Movie ['vote_average'] . '</strong></h1><br />
 				<h4>By - ' . $Movie ['vote_count'] . ' voters</h4>
-				<p><i>"' . $Movie ['first_air_date'] . '" - "' . $Movie ['last_air_date'] . '"</i></p>
+				<p>"' . $Movie ['first_air_date'] . '" - "' . $Movie ['last_air_date'] . '"</p>
 				</div>
 				<div class="col-md-7 center">
 					<h1 class="center-vertical ellipsis" style="font-size: 7em;">' . $Movie ['name'] . '</h1><br />
@@ -38,31 +45,31 @@ if ($_GET ['i']) {
 		<div class="jumbotron no-padding">
 			<div class="row">
 				<div class="col-md-12">
-					<h1 class="center-vertical">Plot</h1><br />
+					<h1 class="center-vertical bold">Plot</h1><br />
 					<p>' . $Movie ['overview'] . '</p>
 				</div>
 			</div>
 		</div>
 		<div class="jumbotron no-padding">
-			<h1>Seasons<h1>';
+			<h1 class="bold">Seasons<h1>';
 	getSeasons ( $Movie );
 	echo '</div>
 		<div class="jumbotron no-padding">
 			<div class="row">
 				<div class="col-md-3">
-					<h1 class="center-vertical ellipsis">Genre</h1><br />';
+					<h1 class="center-vertical ellipsis bold">Genre</h1><br />';
 	getGenre ( $Movie );
 	echo '</div>
 				<div class="col-md-3">
-				<h1 class="center-vertical ellipsis">Production</h1><br />';
+				<h1 class="center-vertical ellipsis bold">Production</h1><br />';
 	getProduction ( $Movie );
 	echo '</div>
 				<div class="col-md-3">
-				<h1 class="center-vertical ellipsis">On & In</h1><br />';
+				<h1 class="center-vertical ellipsis bold">On & In</h1><br />';
 	getNetwork ( $Movie );
 	echo '</div>
 				<div class="col-md-3">
-				<h1 class="center-vertical ellipsis">Extra</h1><br />';
+				<h1 class="center-vertical ellipsis bold">Extra</h1><br />';
 	getExtra ( $Movie );
 	echo '</div>
 			</div>
