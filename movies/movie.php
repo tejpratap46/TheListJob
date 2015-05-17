@@ -21,7 +21,7 @@ error_reporting ( 0 );
 <link href="navbar-fixed-top.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="jumbotron">
 	<!-- Fixed navbar -->
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
@@ -56,11 +56,11 @@ error_reporting ( 0 );
 					echo "<li><a href='#'>Profile</a></li>";
 					echo "<li class='divider'></li>";
 					echo "<li class='dropdown-header'>Say Good Bye</li>";
-					echo "<li><a href='logout.php'>Logout</a></li>";
+					echo "<li><a href='../logout.php'>Logout</a></li>";
 					echo "</ul>";
 					echo "</li>";
 				} else {
-					echo '<a type="button" class="btn btn-default navbar-btn" href="login.php">Sign in</a>';
+					echo '<a type="button" class="btn btn-default navbar-btn" href="../login.php">Sign in</a>';
 				}
 				?>
 				</ul>

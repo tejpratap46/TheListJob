@@ -11,7 +11,7 @@ error_reporting ( 0 );
 <meta name="author" content="">
 <link rel="icon" href="favicon.ico">
 
-<title>Tv Lists</title>
+<title>Tv List</title>
 
 <!-- Bootstrap core CSS -->
 <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -21,7 +21,7 @@ error_reporting ( 0 );
 <link href="navbar-fixed-top.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="jumbotron">
 	<!-- Fixed navbar -->
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
@@ -56,11 +56,11 @@ error_reporting ( 0 );
 					echo "<li><a href='#'>Profile</a></li>";
 					echo "<li class='divider'></li>";
 					echo "<li class='dropdown-header'>Say Good Bye</li>";
-					echo "<li><a href='logout.php'>Logout</a></li>";
+					echo "<li><a href='../logout.php'>Logout</a></li>";
 					echo "</ul>";
 					echo "</li>";
 				} else {
-					echo '<a type="button" class="btn btn-default navbar-btn" href="login.php">Sign in</a>';
+					echo '<a type="button" class="btn btn-default navbar-btn" href="../login.php">Sign in</a>';
 				}
 				?>
 				</ul>
@@ -71,9 +71,9 @@ error_reporting ( 0 );
 
 	<div class="container" style="width: 100%; margin-top: 70px;">
 		<!-- Main component for a primary marketing message or call to action -->
-		<div class="jumbotron blue-theme">
-			<h1 class="bold">Movie Lists</h1>
-			<p>Movies Waiting For You.</p>
+		<div class="thumbnail center">
+			<h1 class="bold">Tv Lists</h1>
+			<p>Shows Waiting For You.</p>
 		</div>
 		<div class="jumbotron">
 			<div class="row" id="items">

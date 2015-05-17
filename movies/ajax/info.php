@@ -6,7 +6,7 @@ $tmdb = new TMDb ( 'c2c73ebd1e25cbc29cf61158c04ad78a' );
 $config = $tmdb->getConfig ();
 if ($_GET ['i']) {
 	$Movie = $tmdb->getMovie ( $_GET ['i'] );
-	echo '<div class="jumbotron no-padding blue-theme">
+	echo '<div class="thumbnail center">
 			<div class="row">
 				<div class="col-md-12">
 					<h1 class="center bold">' . $Movie ['title'] . '</h1>
@@ -17,36 +17,36 @@ if ($_GET ['i']) {
 		<img class="center-image full-width" alt="' . $Movie ['title'] . '"
 					src="http://image.tmdb.org/t/p/w780' . $Movie ['backdrop_path'] . '">
 		</div>
-		<div class="jumbotron no-padding" style="padding-left: 0px; padding-right: 0px;">
+		<div class="thumbnail no-padding" style="padding-left: 0px; padding-right: 0px;">
 			<div class="row">
 				<div class="col-md-2">
 				<img class="center-image full-width" alt="loading..."
 						src="http://image.tmdb.org/t/p/w185' . $Movie ['poster_path'] . '">
 				</div>
 				<div class="col-md-3 center">
-				<h1 style="font-size: 10em;"><strong>' . $Movie ['vote_average'] . '</strong></h1><br />
-				<h4>By - ' . $Movie ['vote_count'] . ' voters</h4>
-				<h3>Release : ' . $Movie ['release_date'] . '</h3>
+					<h1 style="font-size: 10em;" class="bold">' . $Movie ['vote_average'] . '</h1>
+					<h4>By - ' . $Movie ['vote_count'] . ' voters</h4>
+					<h3>Release : ' . $Movie ['release_date'] . '</h3>
 				</div>
 				<div class="col-md-7 center">
-					<h1 class="center-vertical ellipsis" style="font-size: 7em;">' . $Movie ['original_title'] . '</h1><br />
-					<h3 class="center-vertical"><i>"' . $Movie ['tagline'] . '"</i></h3><br />
-							<div class="row">
-							<div class="col-md-6">
-					<button type="button" class="btn btn-lg btn-success full-width bottom" onclick="addToList(\'' . $Movie ['imdb_id'] . '\')">Add To List</button>
-							</div>
-							<div class="col-md-6">
-					<button type="button" class="btn btn-lg btn-primary full-width bottom" onclick="getTrailer()">Trailer</button>
-							</div>
-							</div>
+					<h1 class="center-vertical ellipsis bold" style="font-size: 7em;">' . $Movie ['original_title'] . '</h1>
+					<p class="center-vertical">"' . $Movie ['tagline'] . '"</p>
 				</div>
+			</div>
+		</div>
+		<div class="row well">
+			<div class="col-md-6">
+				<button type="button" class="btn btn-lg btn-success full-width bottom" onclick="addToList(\'' . $Movie ['imdb_id'] . '\')">Add To List</button>
+			</div>
+			<div class="col-md-6">
+				<button type="button" class="btn btn-lg btn-primary full-width bottom" onclick="getTrailer()">Trailer</button>
 			</div>
 		</div>
 		<div id="trailer"></div>
 		<div class="jumbotron no-padding">
 			<div class="row">
 				<div class="col-md-12">
-					<h1 class="center-vertical">Plot</h1><br />
+					<h1 class="center-vertical bold">Plot</h1><br />
 					<p>' . $Movie ['overview'] . '</p>
 				</div>
 			</div>
@@ -54,7 +54,7 @@ if ($_GET ['i']) {
 		<div class="jumbotron no-padding">
 			<div class="row">
 				<div class="col-md-3">
-					<h1 class="center-vertical ellipsis">Genre</h1><br />';
+					<h1 class="center-vertical ellipsis bold">Genre</h1><br />';
 	getGenre ( $Movie );
 	echo '</div>
 				<div class="col-md-3">

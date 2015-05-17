@@ -11,13 +11,15 @@ if ($_GET['p'] == 1) {
 		$id = str_replace ( "http://www.imdb.com/title/", "", $Movies [$i]->{'link'} );
 		$id = str_replace ( "/", "", $id );
 		echo '<div class="col-sm-6 col-md-3">
-				
-						<a href="movie.php?i=' . $id . '"><div class="thumbnail">
-							<div class="caption">
-								<h2 class="center ellipsis">' . $Movies [$i]->{'title'} . '</h2>
-								<p class="center ellipsis">' . $Movies [$i]->{'contentSnippet'} . '</p>
+						<a href="movie.php?i=' . $id . '">
+							<div class="thumbnail">
+								<h1 class="center bold">'.($i + 1).'</h1>
+								<div class="caption">
+									<h2 class="center ellipsis">' . $Movies [$i]->{'title'} . '</h2>
+									<p class="center ellipsis">' . $Movies [$i]->{'contentSnippet'} . '</p>
+								</div>
 							</div>
-						</div></a>
+						</a>
 					</div>';
 		if ($i % 4 == 3) {
 			echo '</div>';

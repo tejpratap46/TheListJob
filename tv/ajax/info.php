@@ -17,7 +17,7 @@ if ($_GET ['i']) {
 			<img class="center-image full-width" alt="' . $Movie ['name'] . '"
 					src="http://image.tmdb.org/t/p/w780' . $Movie ['backdrop_path'] . '">
 		</div>
-		<div class="jumbotron no-padding" style="padding-left: 0px; padding-right: 0px;">
+		<div class="thumbnail no-padding" style="padding-left: 0px; padding-right: 0px;">
 			<div class="row">
 				<div class="col-md-2">
 				<img class="center-image full-width" alt="loading..."
@@ -29,18 +29,20 @@ if ($_GET ['i']) {
 				<p>"' . $Movie ['first_air_date'] . '" - "' . $Movie ['last_air_date'] . '"</p>
 				</div>
 				<div class="col-md-7 center">
-					<h1 class="center-vertical ellipsis" style="font-size: 7em;">' . $Movie ['name'] . '</h1><br />
-							<div class="row">
-							<div class="col-md-6">
-					<button type="button" class="btn btn-lg btn-success full-width bottom" onclick="addToList(\'' . $Movie ['imdb_id'] . '\')">Add To List</button>
-							</div>
-							<div class="col-md-6">
-					<button type="button" class="btn btn-lg btn-primary full-width bottom" onclick="getTrailer()">Trailer</button>
-							</div>
-							</div>
+					<h1 class="center-vertical ellipsis bold" style="font-size: 7em;">' . $Movie ['name'] . '</h1><br />
 				</div>
 			</div>
 		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<button type="button" class="btn btn-lg btn-success full-width bottom" onclick="addToList(\'' . $Movie ['imdb_id'] . '\')">Add To List</button>
+			</div>
+			<div class="col-md-6">
+				<button type="button" class="btn btn-lg btn-primary full-width bottom" onclick="getTrailer()">Trailer</button>
+			</div>
+		</div>
+
 		<div id="trailer"></div>
 		<div class="jumbotron no-padding">
 			<div class="row">

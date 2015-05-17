@@ -3,12 +3,22 @@
 	color: white;
 }
 
+.light-blue-theme {
+	background: #184C85;
+	color: white;
+}
+
 .bg-light-blue {
 	background: #E9EAED;
 }
 
 .height-30px {
 	height: 30px;
+}
+
+.title {
+	font-size: 10em;
+	font-weight: bold;
 }
 
 .center {

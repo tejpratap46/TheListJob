@@ -17,7 +17,7 @@ if ($q) {
 	}
 }
 for($i = 0; $i < count ( $results ); $i ++) {
-	echo '<div class="row well">
+	echo '<div class="row thumbnail">
 			<h2 class="bold">'.$results [$i] ['title'].'</h2>
 			<h4 class="bold">'.$results [$i] ['publishedDate'].'</h4>
 			<p>'.$results [$i] ['contentSnippet'].'</p>

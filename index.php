@@ -21,7 +21,7 @@ error_reporting ( 0 );
 <link href="navbar-fixed-top.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="jumbotron">
 	<!-- Fixed navbar -->
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
@@ -70,13 +70,13 @@ error_reporting ( 0 );
 		</div>
 	</nav>
 
-	<div class="container" style="width: 100%; margin-top: 70px;">
+	<div class="container" style="width: 100%; margin-top: 50px;">
 		<!-- Main component for a primary marketing message or call to action -->
-		<div class="jumbotron blue-theme">
-			<h1 class="bold">The List Job</h1>
+		<div class="alert alert-success center">
+			<h1 class="bold" style="color: white;">The List Job</h1>
 			<p>Great Stuff To Do Next.</p>
 		</div>
-		<div class="jumbotron">
+		<div>
 			<div class="row">
 				<div class="col-sm-6 col-md-3">
 					<a href="movies"><div class="thumbnail">

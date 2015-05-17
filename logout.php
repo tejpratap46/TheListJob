@@ -9,7 +9,7 @@ setcookie("tljusername", "", time() - (86400 * 30), "/");
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="icon" href="favicon.ico">
-<title>Ifi</title>
+<title>The List Job</title>
 
 <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -24,12 +24,12 @@ setcookie("tljusername", "", time() - (86400 * 30), "/");
 			<div class="cover-container">
 				<div class="masthead clearfix">
 					<div class="inner">
-						<h1 class="masthead-brand">If i</h1>
+						<h1 class="masthead-brand">The List Job</h1>
 					</div>
 				</div>
 				<div class="inner cover">
 					<h1 class="cover-heading">Sucessfully Logged Out</h1>
-					<p class="lead">If i - An App That Does What You Have To.</p>
+					<p class="lead">The List Job - Manage All Your Entertainment At One Place.</p>
 					<p class="lead">
 						<a href="index.php" class="btn btn-lg btn-default">Home</a>
 					</p>
@@ -37,8 +37,7 @@ setcookie("tljusername", "", time() - (86400 * 30), "/");
 				<div class="mastfoot">
 					<div class="inner">
 						<p>
-							<a href="index.php">If i</a>, by <a
-								href="mailto:tejpratap46@gmail.com?Subject=Ifi">Tej Pratap Singh</a>.
+							<a href="index.php">The List Job</a>, by <a href="mailto:tejpratap46@gmail.com?Subject=The+List+Job">Tej Pratap Singh</a>.
 						</p>
 					</div>
 				</div>
