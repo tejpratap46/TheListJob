@@ -71,7 +71,7 @@ error_reporting ( 0 );
 
 	<div class="container" style="width: 100%; margin-top: 70px;">
 		<!-- Main component for a primary marketing message or call to action -->
-		<div class="jumbotron blue-theme">
+		<div class="thumbnail center">
 			<h1 class="bold">Movie Lists</h1>
 			<p>Movies Waiting For You.</p>
 		</div>

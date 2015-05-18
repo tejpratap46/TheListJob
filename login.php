@@ -25,8 +25,10 @@ if (isset($_COOKIE['tljusername'])) {
 
 <body>
 	<div class="container">
-		<form class="form-signin" method="post">
-			<h1 class="form-signin-heading bold" >The List Job</h1>
+		<div class="row center">
+			<a href="index.php"><h1 class="form-signin-heading bold" >The List Job</h1></a>
+		</div>
+		<form class="form-signin thumbnail" method="post">
 			<h1 class="form-signin-heading">Login</h1>
 			<label for="inputEmail" class="sr-only">Email address</label>
 			<input id="email" type="email" name="email" class="form-control" placeholder="Email address" required autofocus>
@@ -50,9 +52,10 @@ if (isset($_COOKIE['tljusername'])) {
 	function login () {
 		email = $('#email').val();
 		password = $('#password').val();
+		$('.notification').text('Loading...').show();
 		$.getJSON('api/user.login.php?apikey=tejpratap&email=' + email + '&password=' + password, function(json, textStatus) {
 			if (json.status == 1) {
-				console.log(json.email);
+				$('.notification').hide();
 				$.cookie('tljusername', json.email, { expires: 365, path: '/' });
 				window.location.href = "index.php";
 			}else{

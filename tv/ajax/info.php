@@ -6,7 +6,7 @@ $tmdb = new TMDb ( 'c2c73ebd1e25cbc29cf61158c04ad78a' );
 $config = $tmdb->getConfig ();
 if ($_GET ['i']) {
 	$Movie = $tmdb->getTv ( $_GET ['i'] );
-	echo '<div class="jumbotron no-padding blue-theme">
+	echo '<div class="thumbnail center">
 			<div class="row">
 				<div class="col-md-12">
 					<h1 class="center bold">' . $Movie ['name'] . '</h1>

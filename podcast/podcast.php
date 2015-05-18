@@ -84,6 +84,7 @@ error_reporting ( 0 );
 					src="../images/loading.gif">
 			</div>
 		</div>
+		<div class="notification"></div>
 	</div>
 	<!-- /container -->
 	<!-- Bootstrap core JavaScript
@@ -105,6 +106,18 @@ error_reporting ( 0 );
 	    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
 	        results = regex.exec(location.search);
 	    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+	}
+
+	function subscribe (name, rss) {
+		$('.notification').text('Loading...').show();
+		$.getJSON('../api/user.podcast.subscribe.php?apikey=tejpratap&email=' + <?php echo "'".$_COOKIE['tljusername']."'"; ?> + '&name=' + name + '&rss=' + rss, function(json, textStatus) {
+			$('.notification').hide();
+			if(json.status == 1){
+				$('.notification').text('Subscribed').show(200).delay(3000).hide(200);
+			}else{
+				$('.notification').text('Cannot Subscribed : ' + json.error).show(200).delay(3000).hide(200);
+			}
+		});
 	}
 	
 	function ajaxCall(){

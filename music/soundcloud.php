@@ -11,7 +11,7 @@ error_reporting ( 0 );
 <meta name="author" content="">
 <link rel="icon" href="favicon.ico">
 
-<title>Tv List</title>
+<title>Music List</title>
 
 <!-- Bootstrap core CSS -->
 <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -39,12 +39,12 @@ error_reporting ( 0 );
 				<ul class="nav navbar-nav">
 					<li><a href="../">Home</a></li>
 					<li><a href="../movies">Movies</a></li>
-					<li class="active"><a href="../tv">Tv Shows</a></li>
-					<li><a href="../music">Music</a></li>
+					<li><a href="../tv">Tv Shows</a></li>
+					<li class="active"><a href="../music">Music</a></li>
 					<li><a href="../podcast">Podcast</a></li>
 					<form class="navbar-form navbar-left" role="search" action="search.php">
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Search" name="q">
+							<input type="text" class="form-control" placeholder="Search" name="q" value="">
 						</div>
 					</form>
 				</ul>
@@ -72,8 +72,10 @@ error_reporting ( 0 );
 	<div class="container" style="width: 100%; margin-top: 70px;">
 		<!-- Main component for a primary marketing message or call to action -->
 		<div class="thumbnail center">
-			<h1 class="bold">Tv Lists</h1>
-			<p>Tv Shows For You.</p>
+			<h1 class="bold">Music Lists</h1>
+			<form action="#" onsubmit="search();">
+				<input value="<?php echo $_GET['q']?>" id="searchText" class="half-width" type="text" placeholder="Search On Soundcolud" />
+			</form>
 		</div>
 		<div class="jumbotron">
 			<div class="row" id="items"></div>
@@ -94,11 +96,14 @@ error_reporting ( 0 );
 	<script src="../js/bootstrap.min.js"></script>
 
 	<script type="text/javascript">
-	var t = getParameterByName('t');
-	var pg = 1;
+	var q = getParameterByName('q');
 	setTimeout(function () {
-		$("#loading").toggle(100);
-		ajaxCall(pg);
+		if (q.length > 0) {
+			$("#loading").toggle(100);
+			ajaxCall();
+		}else{
+			$("#loading").hide(100);
+		}
 	}, 50);
 
 	function getParameterByName(name) {
@@ -108,14 +113,12 @@ error_reporting ( 0 );
 	    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 	}
 
-	$(window).scroll(function() {
-	   if($(window).scrollTop() + $(window).height() == $(document).height()) {
-		   pg = pg + 1;
-		   ajaxCall(pg);
-	   }
-	});
+	function search() {
+		q = $('#searchText').val();
+		ajaxCall();
+	}
 	
-	function ajaxCall(p){
+	function ajaxCall(){
 		$("#loading").toggle(100);
 		var xmlhttp = new XMLHttpRequest();
 	    xmlhttp.onreadystatechange = function() {
@@ -125,7 +128,7 @@ error_reporting ( 0 );
 	        	$("#loading").toggle(100);
 	        }
 	    }
-	    xmlhttp.open("GET", "ajax/"+t+".php?p=" + p, true);
+	    xmlhttp.open("GET", "ajax/soundcloud.php?q=" + q, true);
 	    xmlhttp.send();
 	}
 	</script>

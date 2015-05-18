@@ -51,54 +51,46 @@ if ($_GET ['i']) {
 				</div>
 			</div>
 		</div>
-		<div class="jumbotron no-padding">
+		<div class="thumbnail no-padding">
 			<div class="row">
 				<div class="col-md-3">
 					<h1 class="center-vertical ellipsis bold">Genre</h1><br />';
-	getGenre ( $Movie );
-	echo '</div>
+					getGenre ( $Movie );
+				echo '</div>
 				<div class="col-md-3">
-				<h1 class="center-vertical ellipsis bold">Production</h1><br />';
-	getProduction ( $Movie );
-	echo '</div>
+					<h1 class="center-vertical ellipsis bold">Production</h1><br />';
+					getProduction ( $Movie );
+				echo '</div>
 				<div class="col-md-3">
-				<h1 class="center-vertical ellipsis bold">Countries</h1><br />';
-	getCountries ( $Movie );
-	echo '</div>
+					<h1 class="center-vertical ellipsis bold">Countries</h1><br />';
+					getCountries ( $Movie );
+				echo '</div>
 				<div class="col-md-3">
-				<h1 class="center-vertical ellipsis bold">Extra</h1><br />';
-	getExtra ( $Movie );
-	echo '</div>
+					<h1 class="center-vertical ellipsis bold">Extra</h1><br />';
+					getExtra ( $Movie );
+				echo '</div>
 			</div>
 		</div>';
 }
 function getGenre($Movie) {
-	echo '<div class="thumbnail">';
 	for($i = 0; $i < count ( $Movie ['genres'] ); $i ++) {
 		echo '<a href="genre.php?t=' . $Movie ['genres'] [$i] ['id'] . '"><h4 class="no-padding no-margin">' . ($i + 1) . ". " . $Movie ['genres'] [$i] ['name'] . '</h4></a><br />';
 	}
-	echo "</div>";
 }
 function getProduction($Movie) {
-	echo '<div class="thumbnail">';
 	for($i = 0; $i < count ( $Movie ['production_companies'] ); $i ++) {
 		echo '<h4 class="no-padding no-margin">' . ($i + 1) . ". " . $Movie ['production_companies'] [$i] ['name'] . '</h4><br />';
 	}
-	echo "</div>";
 }
 function getCountries($Movie) {
-	echo '<div class="thumbnail">';
 	for($i = 0; $i < count ( $Movie ['production_countries'] ); $i ++) {
 		echo '<h4 class="no-padding no-margin">' . ($i + 1) . ". " . $Movie ['production_countries'] [$i] ['name'] . '</h4><br />';
 	}
-	echo "</div>";
 }
 function getExtra($Movie) {
-	echo '<div class="thumbnail">';
 	echo '<h3>' . $Movie ['runtime'] . 'min</h3>';
 	echo '<h3>' . $Movie ['budget'] . '$ spent</h3>';
 	echo '<h3>' . $Movie ['revenue'] . '$ revenue</h3>';
-	echo '<a href ="' . $Movie ['homepage'] . '"><h3>Website</h3></a>';
-	echo "</div>";
+	echo '<a href ="' . $Movie ['homepage'] . '"><h3 class="bold">Website</h3></a>';
 }
 ?>
