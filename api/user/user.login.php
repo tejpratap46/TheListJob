@@ -1,5 +1,5 @@
 <?php
-require 'api.key.php';
+require '../api.key.php';
 
 $email = $_GET['email'];
 $password = $_GET['password'];

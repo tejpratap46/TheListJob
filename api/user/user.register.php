@@ -1,5 +1,5 @@
 <?php
-require 'api.key.php';
+require '../api.key.php';
 
 $email = $_GET['email'];
 $password = $_GET['password'];
@@ -9,12 +9,13 @@ if ($email && $password) {
 	$tableName = md5($email);
 	$queryNewTable = mysql_query("CREATE TABLE $tableName
 									(
-										movieTodo TEXT,
-										tvTodo TEXT,
-										podcastTodo TEXT,
-										musicPlaylist TEXT,
-										dummy1 TEXT,
-										dummy2 TEXT
+										id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+										movieTodo VARCHAR(10000) DEFAULT 'EMPTY',
+										tvTodo VARCHAR(10000) DEFAULT 'EMPTY',
+										podcastTodo VARCHAR(10000) DEFAULT 'EMPTY',
+										musicPlaylist VARCHAR(10000) DEFAULT 'EMPTY',
+										dummy1 VARCHAR(10000) DEFAULT 'EMPTY',
+										dummy2 VARCHAR(10000) DEFAULT 'EMPTY'
 									)") or die('{"status":0,"error":"'.mysql_error().'"}');
 	if ($queryNewTable) {
 	$query = mysql_query("INSERT INTO `user`(`email`, `password`) VALUES ('$email', '$password')") or die('{"status":0,"error":"'.mysql_error().'"}');

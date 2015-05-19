@@ -26,7 +26,7 @@ if ($_GET ['i']) {
 				<div class="col-md-3 center">
 					<h1 style="font-size: 10em;" class="bold">' . $Movie ['vote_average'] . '</h1>
 					<h4>By - ' . $Movie ['vote_count'] . ' voters</h4>
-					<h3>Release : ' . $Movie ['release_date'] . '</h3>
+					<h3>' . $Movie ['release_date'] . '</h3>
 				</div>
 				<div class="col-md-7 center">
 					<h1 class="center-vertical ellipsis bold" style="font-size: 7em;">' . $Movie ['original_title'] . '</h1>
@@ -36,7 +36,7 @@ if ($_GET ['i']) {
 		</div>
 		<div class="row well">
 			<div class="col-md-6">
-				<button type="button" class="btn btn-lg btn-success full-width bottom" onclick="addToList(\'' . $Movie ['imdb_id'] . '\')">Add To List</button>
+				<button type="button" class="btn btn-lg btn-success full-width bottom" onclick="addToList(\'' . $Movie ['original_title'] . '\',\'' . $Movie ['imdb_id'] . '\')">Add To TO-DO</button>
 			</div>
 			<div class="col-md-6">
 				<button type="button" class="btn btn-lg btn-primary full-width bottom" onclick="getTrailer()">Trailer</button>

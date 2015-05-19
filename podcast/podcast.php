@@ -71,10 +71,6 @@ error_reporting ( 0 );
 
 	<div class="container" style="width: 100%; margin-top: 70px;">
 		<!-- Main component for a primary marketing message or call to action -->
-		<div class="thumbnail center">
-			<h1 class="bold">Podcast Lists</h1>
-			<p>Modern Day Radio Shows.</p>
-		</div>
 		<div class="jumbotron">
 			<div class="row" id="items"></div>
 		</div>
@@ -110,7 +106,7 @@ error_reporting ( 0 );
 
 	function subscribe (name, rss) {
 		$('.notification').text('Loading...').show();
-		$.getJSON('../api/user.podcast.subscribe.php?apikey=tejpratap&email=' + <?php echo "'".$_COOKIE['tljusername']."'"; ?> + '&name=' + name + '&rss=' + rss, function(json, textStatus) {
+		$.getJSON('../api/podcast/podcast.subscribe.php?apikey=tejpratap&email=' + <?php echo "'".$_COOKIE['tljusername']."'"; ?> + '&name=' + name + '&rss=' + rss, function(json, textStatus) {
 			$('.notification').hide();
 			if(json.status == 1){
 				$('.notification').text('Subscribed').show(200).delay(3000).hide(200);

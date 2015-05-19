@@ -35,14 +35,17 @@ for($i = 0; $i < count ( $results ); $i ++) {
 			<h4 class="bold">'.$results [$i] ['publishedDate'].'</h4>
 			<p>'.$results [$i] ['contentSnippet'].'</p>
 			<div class="row thumbnail">
-				<div class="col-md-10 center-vertical center">
+				<div class="col-md-12 center-vertical center">
 					<audio style="width: 100%;" controls="controls" preload="none">
 						<source src="' . $results [$i] ['track'] . '">
 					</audio>
 				</div>
-				<div class="col-md-2">
-					<a target="_blank" href="' . $results [$i] ['track'] . '" class="btn btn-primary full-width" >Download</a>
-				</div>
+			</div>
+			<div class="col-md-6">
+				<button class="btn btn-primary full-width" onclick="playlist(\'' . $name." : ".$results [$i] ['title'] . '\',\'' . $results [$i] ['track'] . '\')">Add To Playlist</button>
+			</div>
+			<div class="col-md-6">
+				<a target="_blank" href="' . $results [$i] ['track'] . '" class="btn btn-danger full-width" >Download</a>
 			</div>
 		</div>';
 }

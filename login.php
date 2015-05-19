@@ -53,7 +53,7 @@ if (isset($_COOKIE['tljusername'])) {
 		email = $('#email').val();
 		password = $('#password').val();
 		$('.notification').text('Loading...').show();
-		$.getJSON('api/user.login.php?apikey=tejpratap&email=' + email + '&password=' + password, function(json, textStatus) {
+		$.getJSON('api/user/user.login.php?apikey=tejpratap&email=' + email + '&password=' + password, function(json, textStatus) {
 			if (json.status == 1) {
 				$('.notification').hide();
 				$.cookie('tljusername', json.email, { expires: 365, path: '/' });
@@ -67,7 +67,7 @@ if (isset($_COOKIE['tljusername'])) {
 	function register () {
 		email = $('#email').val();
 		password = $('#password').val();
-		$.getJSON('api/user.register.php?apikey=tejpratap&email=' + email + '&password=' + password, function(json, textStatus) {
+		$.getJSON('api/user/user.register.php?apikey=tejpratap&email=' + email + '&password=' + password, function(json, textStatus) {
 			if (json.status == 1) {
 				console.log(json.email);
 				$.cookie('tljusername', json.email, { expires: 365, path: '/' });

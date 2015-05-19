@@ -122,6 +122,18 @@ error_reporting ( 0 );
 	    xmlhttp.send();
 	}
 
+	function addToList (name, id) {
+		$('.notification').text('Loading...').show();
+		$.getJSON('../api/movie/movie.addtodo.php?apikey=tejpratap&email=' + <?php echo "'".$_COOKIE['tljusername']."'"; ?> + '&name=' + name + '&id=' + id, function(json, textStatus) {
+			$('.notification').hide();
+			if(json.status == 1){
+				$('.notification').text('Added').show(200).delay(3000).hide(200);
+			}else{
+				$('.notification').text('Cannot Add : ' + json.error).show(200).delay(3000).hide(200);
+			}
+		});
+	}
+
 	var sim = false;
 	
 	$(window).scroll(function() {
