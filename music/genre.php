@@ -11,7 +11,7 @@ error_reporting ( 0 );
 <meta name="author" content="">
 <link rel="icon" href="favicon.ico">
 
-<title>Podcast List</title>
+<title>Music List</title>
 
 <!-- Bootstrap core CSS -->
 <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -40,11 +40,11 @@ error_reporting ( 0 );
 					<li><a href="../">Home</a></li>
 					<li><a href="../movies">Movies</a></li>
 					<li><a href="../tv">Tv Shows</a></li>
-					<li><a href="../music">Music</a></li>
-					<li class="active"><a href="../podcast">Podcast</a></li>
+					<li class="active"><a href="../music">Music</a></li>
+					<li><a href="../podcast">Podcast</a></li>
 					<form class="navbar-form navbar-left" role="search" action="search.php">
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Search" name="q" value="<?php echo $_GET['q']?>">
+							<input type="text" class="form-control" placeholder="Search" name="q" value="">
 						</div>
 					</form>
 				</ul>
@@ -72,8 +72,8 @@ error_reporting ( 0 );
 	<div class="container" style="width: 100%; margin-top: 70px;">
 		<!-- Main component for a primary marketing message or call to action -->
 		<div class="thumbnail center">
-			<h1 class="bold">Podcast Lists</h1>
-			<p>Modern Day Radio Shows.</p>
+			<h1 class="bold">Songs</h1>
+			<p>Top Songs By Genre.</p>
 		</div>
 		<div class="jumbotron">
 			<div class="row" id="items"></div>
@@ -117,7 +117,7 @@ error_reporting ( 0 );
 	        	$("#loading").toggle(100);
 	        }
 	    }
-	    xmlhttp.open("GET", "ajax/search.php?q=" + q, true);
+	    xmlhttp.open("GET", "ajax/genre.php?i=" + q, true);
 	    xmlhttp.send();
 	}
 	</script>

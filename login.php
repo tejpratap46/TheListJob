@@ -39,7 +39,7 @@ if (isset($_COOKIE['tljusername'])) {
 					<button class="btn btn-lg btn-primary btn-block" type="button" onclick="login();">Log in</button>
 				</div>
 				<div class="col-md-6">
-					<button class="btn btn-lg btn-primary btn-block" type="button" onclick="register();">Register</button>
+					<button class="btn btn-lg btn-success btn-block" type="button" onclick="register();">Register</button>
 				</div>
 			</div>
 		</form>

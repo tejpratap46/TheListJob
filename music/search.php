@@ -53,14 +53,14 @@ error_reporting ( 0 );
 				if ($_COOKIE ['tljusername']) {
 					echo "<li class='dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-expanded='false'>" . $_COOKIE ['tljusername'] . "<span class='caret'></span></a>";
 					echo "<ul class='dropdown-menu' role='menu'>";
-					echo "<li><a href='#'>Profile</a></li>";
+					echo "<li><a href='../profile.php'>Profile</a></li>";
 					echo "<li class='divider'></li>";
 					echo "<li class='dropdown-header'>Say Good Bye</li>";
 					echo "<li><a href='../logout.php'>Logout</a></li>";
 					echo "</ul>";
 					echo "</li>";
 				} else {
-					echo '<a type="button" class="btn btn-default navbar-btn" href="../login.php">Sign in</a>';
+					echo '<a type="button" class="btn btn-default navbar-btn full-width" href="../login.php">Sign in</a>';
 				}
 				?>
 				</ul>
@@ -74,6 +74,9 @@ error_reporting ( 0 );
 		<div class="thumbnail center">
 			<h1 class="bold">Music Lists</h1>
 			<p>Music We All Love.</p>
+			<form action="soundcloud.php" method="get">
+				<input value="" id="searchText" name="q" onfocus="{this.value = '<?php echo $_GET['q']?>'}" onblur="{this.value = ''}" class="half-width" type="text" placeholder="Search On Soundcolud" />
+			</form>
 		</div>
 		<div class="jumbotron">
 			<div class="row" id="items"></div>

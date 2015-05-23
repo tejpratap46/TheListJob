@@ -55,14 +55,14 @@ error_reporting ( 0 );
 				if ($_COOKIE ['tljusername']) {
 					echo "<li class='dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-expanded='false'>" . $_COOKIE ['tljusername'] . "<span class='caret'></span></a>";
 					echo "<ul class='dropdown-menu' role='menu'>";
-					echo "<li><a href='#'>Profile</a></li>";
+					echo "<li><a href='../profile.php'>Profile</a></li>";
 					echo "<li class='divider'></li>";
 					echo "<li class='dropdown-header'>Say Good Bye</li>";
 					echo "<li><a href='../logout.php'>Logout</a></li>";
 					echo "</ul>";
 					echo "</li>";
 				} else {
-					echo '<a type="button" class="btn btn-default navbar-btn" href="../login.php">Sign in</a>';
+					echo '<a type="button" class="btn btn-default navbar-btn full-width" href="../login.php">Sign in</a>';
 				}
 				?>
 				</ul>

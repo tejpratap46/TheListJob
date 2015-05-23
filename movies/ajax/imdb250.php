@@ -5,12 +5,12 @@ if ($_GET['p'] == 1) {
 	$json = json_decode ( file_get_contents ( $url ) );
 	$Movies = $json->{'responseData'}->{'feed'}->{'entries'};
 	for($i = 0; $i < count ( $Movies ); $i ++) {
-		if ($i % 4 == 0) {
+		if ($i % 3 == 0) {
 			echo '<div class="row">';
 		}
 		$id = str_replace ( "http://www.imdb.com/title/", "", $Movies [$i]->{'link'} );
 		$id = str_replace ( "/", "", $id );
-		echo '<div class="col-sm-6 col-md-3">
+		echo '<div class="col-md-4">
 						<a href="movie.php?i=' . $id . '">
 							<div class="thumbnail">
 								<h1 class="center bold">'.($i + 1).'</h1>
@@ -21,7 +21,7 @@ if ($_GET['p'] == 1) {
 							</div>
 						</a>
 					</div>';
-		if ($i % 4 == 3) {
+		if ($i % 3 == 2) {
 			echo '</div>';
 		}
 	}

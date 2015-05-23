@@ -1,5 +1,8 @@
 <?php
 error_reporting ( 0 );
+if (!isset($_COOKIE['tljusername'])) {
+	header("Location: login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +14,7 @@ error_reporting ( 0 );
 <meta name="author" content="">
 <link rel="icon" href="favicon.ico">
 
-<title>The List Job</title>
+<title><?php echo $_COOKIE['tljusername']; ?> :: The List Job</title>
 
 <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -73,56 +76,48 @@ error_reporting ( 0 );
 	<div class="container" style="width: 100%; margin-top: 50px;">
 		<!-- Main component for a primary marketing message or call to action -->
 		<div class="alert alert-success center">
-			<h1 class="bold" style="color: white;">The List Job</h1>
-			<p>Great Stuff To Do Next.</p>
+			<h1 class="bold" style="color: white;"><?php echo $_COOKIE['tljusername']; ?></h1>
+			<p>Great Stuff To Do Next Only For You.</p>
 		</div>
 		<div>
-			<div class="row">
-				<div class="col-sm-6 col-md-3">
-					<a href="movies"><div class="thumbnail">
-						<img style="width: 100%;" src="images/movie-512.png" alt="Movies">
-						<div class="caption">
-							<h2 class="center">Movie Lists</h2>
-							<p class="center ellipsis">Collection Of Awsome Movie List For You.</p>
-						</div>
-					</div></a>
-				</div>
-				<div class="col-sm-6 col-md-3">
-					<a href="tv"><div class="thumbnail">
-						<img style="width: 100%;" src="images/tv-512.png" alt="TV Show">
-						<div class="caption">
-							<h2 class="center">Tv Shows</h2>
-							<p class="center ellipsis">Collection Of Awsome Tv Shows For You.</p>
-						</div>
-					</div></a>
-				</div>
-				<div class="col-sm-6 col-md-3">
-					<a href="music"><div class="thumbnail">
-						<img style="width: 100%;" src="images/music-512.png" alt="Music">
-						<div class="caption">
-							<h2 class="center">Music Lists</h2>
-							<p class="center ellipsis">Collection Of Awsome Music For You.</p>
-						</div>
-					</div></a>
-				</div>
-				<div class="col-sm-6 col-md-3">
-					<a href="podcast"><div class="thumbnail">
-						<img style="width: 100%;" src="images/podcast-512.png" alt="Podcast">
-						<div class="caption">
-							<h2 class="center">Podcast Lists</h2>
-							<p class="center ellipsis">Collection Of Awsome Podcasts For You.</p>
-						</div>
-					</div></a>
-				</div>
-			</div>
+			<div class="row" id="movies"></div>
 		</div>
 	</div>
+	<div class="notification"></div>
 	<!-- /container -->
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	setTimeout(function () {
+		getMovies();
+	}, 50);
+	
+	function getMovies () {
+		$(".notification").text('Loading...').show(100);
+		$.getJSON('api/movie/movie.gettodo.php?apikey=tejpratap&email=' + <?php echo "'".$_COOKIE['tljusername']."'" ?>, function(json, textStatus) {	
+			$(".notification").hide(100);
+			if (json.status == 1) {
+				movies = json.movies;
+				// console.log(movies[0]);
+				display = "";
+				for (var i =  0; i < movies.length; i++) {
+					m = movies[i];
+					name = $(m).find('name')[0].text();
+					id = $(m).find('id')[0].text();
+					console.log(name + id);
+					display = display + '<div class="col-md-4">';
+					display = display + '<div class="thumbnail">';
+					display = display + '<h1>' + name + '</h1>';
+					display = display + '</div>';
+					display = display + '</div>';
+				};
+			}
+			$('#movies').html(display);
+		});
+	}
+	</script>
 </body>
 </html>

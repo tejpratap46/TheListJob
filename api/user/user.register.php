@@ -14,6 +14,7 @@ if ($email && $password) {
 										tvTodo VARCHAR(10000) DEFAULT 'EMPTY',
 										podcastTodo VARCHAR(10000) DEFAULT 'EMPTY',
 										musicPlaylist VARCHAR(10000) DEFAULT 'EMPTY',
+										podcastPlaylist VARCHAR(10000) DEFAULT 'EMPTY',
 										dummy1 VARCHAR(10000) DEFAULT 'EMPTY',
 										dummy2 VARCHAR(10000) DEFAULT 'EMPTY'
 									)") or die('{"status":0,"error":"'.mysql_error().'"}');
