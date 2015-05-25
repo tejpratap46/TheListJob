@@ -72,13 +72,13 @@ error_reporting ( 0 );
 	<div class="container" style="width: 100%; margin-top: 70px;" id="info">
 		<img class="center-image" alt="loading..." src="../images/loading.gif">
 	</div>
-	
+
 	<div class="container" style="width: 100%;">
 	<div class="jumbotron">
 		<div class="row" id="items"></div>
 	</div>
 	</div>
-	
+
 	<div class='notification' style='display: none'>Loading...</div>
 
 	<!-- /container -->
@@ -109,6 +109,18 @@ error_reporting ( 0 );
 	    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 	}
 
+	function addToList (name, id) {
+		$('.notification').text('Loading...').show();
+		$.getJSON('../api/tv/tv.subscribe.php?apikey=tejpratap&email=' + <?php echo "'".$_COOKIE['tljusername']."'"; ?> + '&name=' + name + '&id=' + id, function(json, textStatus) {
+			$('.notification').hide();
+			if(json.status == 1){
+				$('.notification').text('Added').show(200).delay(3000).hide(200);
+			}else{
+				$('.notification').text('Cannot Add : ' + json.error).show(200).delay(3000).hide(200);
+			}
+		});
+	}
+
 	function getTrailer(){
 		var i = getParameterByName('i');
 		$('.notification').toggle();
@@ -123,7 +135,7 @@ error_reporting ( 0 );
 	}
 
 	var sim = false;
-	
+
 	$(window).scroll(function() {
 	   if($(window).scrollTop() + $(window).height() == $(document).height()) {
 		   if(!sim){

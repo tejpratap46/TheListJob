@@ -14,7 +14,7 @@ if ($email && $name && $rss) {
 	$qArray = mysql_fetch_array($queryCheck);
 	$id = $qArray['id'];
 
-	$query = mysql_query("UPDATE `". md5($email) ."` SET `podcastTodo`='NULL' WHERE id='" . $id . "'") or die('{"status":0,"error":"'.mysql_error().'"}');
+	$query = mysql_query("UPDATE `". md5($email) ."` SET `podcastTodo`=NULL WHERE id='" . $id . "'") or die('{"status":0,"error":"'.mysql_error().'"}');
 	if ($query) {
 		echo "{";
 		echo '"status":1,';

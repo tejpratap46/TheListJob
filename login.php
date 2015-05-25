@@ -50,6 +50,7 @@ if (isset($_COOKIE['tljusername'])) {
 <script src="js/jquery.cookie.js"></script>
 <script type="text/javascript">
 	function login () {
+		$('.notification').text('Loading...').show();
 		email = $('#email').val();
 		password = $('#password').val();
 		$('.notification').text('Loading...').show();
@@ -65,6 +66,7 @@ if (isset($_COOKIE['tljusername'])) {
 	}
 
 	function register () {
+		$('.notification').text('Loading...').show();
 		email = $('#email').val();
 		password = $('#password').val();
 		$.getJSON('api/user/user.register.php?apikey=tejpratap&email=' + email + '&password=' + password, function(json, textStatus) {
@@ -73,7 +75,7 @@ if (isset($_COOKIE['tljusername'])) {
 				$.cookie('tljusername', json.email, { expires: 365, path: '/' });
 				window.location.href = "index.php";
 			}else{
-				$('.notification').text('Username Already Existed.').show();
+				$('.notification').text('Error: ' + json.error).show();
 			}
 		});
 	}

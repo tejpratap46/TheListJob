@@ -46,7 +46,6 @@ error_reporting ( 0 );
 						<div class="form-group">
 							<input type="text" class="form-control" placeholder="Search">
 						</div>
-						<button type="submit" class="btn btn-default">Search</button>
 					</form>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
@@ -115,7 +114,7 @@ error_reporting ( 0 );
 		   ajaxCall(pg);
 	   }
 	});
-	
+
 	function ajaxCall(p){
 		$("#loading").toggle(100);
 		var xmlhttp = new XMLHttpRequest();

@@ -21,7 +21,7 @@ for($i = 0; $i < count ( $title ); $i ++) {
 	echo '<div class="col-sm-6 col-md-4">
 					<a href="lists.php?t=' . $url [$i] . '"><div class="thumbnail">
 						<div class="caption">
-							<h2 class="center ellipsis bold">' . $title [$i] . '</h2>
+							<h2 class="center ellipsis">' . $title [$i] . '</h2>
 						</div>
 					</div></a>
 				</div>';

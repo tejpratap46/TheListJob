@@ -10,13 +10,13 @@ if ($email && $password) {
 	$queryNewTable = mysql_query("CREATE TABLE $tableName
 									(
 										id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-										movieTodo VARCHAR(10000) DEFAULT 'EMPTY',
-										tvTodo VARCHAR(10000) DEFAULT 'EMPTY',
-										podcastTodo VARCHAR(10000) DEFAULT 'EMPTY',
-										musicPlaylist VARCHAR(10000) DEFAULT 'EMPTY',
-										podcastPlaylist VARCHAR(10000) DEFAULT 'EMPTY',
-										dummy1 VARCHAR(10000) DEFAULT 'EMPTY',
-										dummy2 VARCHAR(10000) DEFAULT 'EMPTY'
+										movieTodo VARCHAR(1000),
+										tvTodo VARCHAR(1000),
+										podcastTodo VARCHAR(1000),
+										musicPlaylist VARCHAR(1000),
+										podcastPlaylist VARCHAR(1000),
+										dummy1 VARCHAR(1000),
+										dummy2 VARCHAR(1000)
 									)") or die('{"status":0,"error":"'.mysql_error().'"}');
 	if ($queryNewTable) {
 	$query = mysql_query("INSERT INTO `user`(`email`, `password`) VALUES ('$email', '$password')") or die('{"status":0,"error":"'.mysql_error().'"}');

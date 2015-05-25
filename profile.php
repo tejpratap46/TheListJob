@@ -80,7 +80,20 @@ if (!isset($_COOKIE['tljusername'])) {
 			<p>Great Stuff To Do Next Only For You.</p>
 		</div>
 		<div>
+			<div class="thumbnail center"><h1 class="bold">Movies TO-DO</h1></div>
 			<div class="row" id="movies"></div>
+		</div>
+		<div>
+			<div class="thumbnail center"><h1 class="bold">TV Show's Following</h1></div>
+			<div class="row" id="tv"></div>
+		</div>
+		<div>
+			<div class="thumbnail center"><h1 class="bold">Music Intrested In</h1></div>
+			<div class="row" id="music"></div>
+		</div>
+		<div>
+			<div class="thumbnail center"><h1 class="bold">Podcast's Subscribed</h1></div>
+			<div class="row" id="podcast"></div>
 		</div>
 	</div>
 	<div class="notification"></div>
@@ -93,29 +106,156 @@ if (!isset($_COOKIE['tljusername'])) {
 	<script type="text/javascript">
 	setTimeout(function () {
 		getMovies();
+		getPodcast();
+		getTv();
 	}, 50);
-	
+
 	function getMovies () {
 		$(".notification").text('Loading...').show(100);
-		$.getJSON('api/movie/movie.gettodo.php?apikey=tejpratap&email=' + <?php echo "'".$_COOKIE['tljusername']."'" ?>, function(json, textStatus) {	
+		$.getJSON('api/movie/movie.gettodo.php?apikey=tejpratap&limit=7&email=' + <?php echo "'".$_COOKIE['tljusername']."'" ?>, function(json, textStatus) {
 			$(".notification").hide(100);
 			if (json.status == 1) {
 				movies = json.movies;
 				// console.log(movies[0]);
 				display = "";
 				for (var i =  0; i < movies.length; i++) {
-					m = movies[i];
-					name = $(m).find('name')[0].text();
-					id = $(m).find('id')[0].text();
-					console.log(name + id);
-					display = display + '<div class="col-md-4">';
-					display = display + '<div class="thumbnail">';
-					display = display + '<h1>' + name + '</h1>';
+					var m = "<div>" + movies[i] + "</div>";
+					name = $(m).children('name').first().text();
+					id = $(m).children('id').first().text();
+					display = display + '<div class="col-md-3">';
+						display = display + '<div class="thumbnail">';
+							display = display + '<a href="movies/movie.php?i='+ id +'">';
+							display = display + '<h1 class="ellipsis center bold">' + (i+1) + '</h1>';
+							display = display + '<div class="caption">';
+								display = display + '<h3 class="ellipsis center">' + name + '</h1>';
+							display = display + '</div>';
+						display = display + '</div>';
+						display = display + '</a>';
 					display = display + '</div>';
+				}
+					display = display + '<div class="col-md-3">';
+						display = display + '<div class="thumbnail">';
+							display = display + '<a href="user/movie.php">';
+							display = display + '<h1 class="ellipsis center bold">*</h1>';
+							display = display + '<div class="caption">';
+								display = display + '<h3 class="ellipsis center">More</h1>';
+							display = display + '</div>';
+						display = display + '</div>';
+						display = display + '</a>';
 					display = display + '</div>';
-				};
 			}
 			$('#movies').html(display);
+		});
+	}
+	function getTv () {
+		$(".notification").text('Loading...').show(100);
+		$.getJSON('api/tv/tv.getsubscription.php?apikey=tejpratap&limit=7&email=' + <?php echo "'".$_COOKIE['tljusername']."'" ?>, function(json, textStatus) {
+			$(".notification").hide(100);
+			if (json.status == 1) {
+				tvs = json.tvs;
+				// console.log(movies[0]);
+				display = "";
+				for (var i =  0; i < tvs.length; i++) {
+					var m = "<div>" + tvs[i] + "</div>";
+					name = $(m).children('name').first().text();
+					id = $(m).children('id').first().text();
+					display = display + '<div class="col-md-4">';
+						display = display + '<div class="thumbnail">';
+							display = display + '<a href="tv/movie.php?i='+ id +'">';
+							display = display + '<h1 class="ellipsis center bold">' + (i+1) + '</h1>';
+							display = display + '<div class="caption">';
+								display = display + '<h3 class="ellipsis center">' + name + '</h1>';
+							display = display + '</div>';
+						display = display + '</div>';
+						display = display + '</a>';
+					display = display + '</div>';
+				}
+					display = display + '<div class="col-md-3">';
+						display = display + '<div class="thumbnail">';
+							display = display + '<a href="user/tv.php">';
+							display = display + '<h1 class="ellipsis center bold">*</h1>';
+							display = display + '<div class="caption">';
+								display = display + '<h3 class="ellipsis center">More</h1>';
+							display = display + '</div>';
+						display = display + '</div>';
+						display = display + '</a>';
+					display = display + '</div>';
+			}
+			$('#tv').html(display);
+		});
+	}
+	function getMusic () {
+		$(".notification").text('Loading...').show(100);
+		$.getJSON('api/movie/movie.gettodo.php?apikey=tejpratap&email=' + <?php echo "'".$_COOKIE['tljusername']."'" ?>, function(json, textStatus) {
+			$(".notification").hide(100);
+			if (json.status == 1) {
+				movies = json.movies;
+				// console.log(movies[0]);
+				display = "";
+				for (var i =  0; i < movies.length; i++) {
+					var m = "<div>" + movies[i] + "</div>";
+					name = $(m).children('name').first().text();
+					id = $(m).children('id').first().text();
+					display = display + '<div class="col-md-4">';
+						display = display + '<div class="thumbnail">';
+							display = display + '<a href="movies/movie.php?i='+ id +'">';
+							display = display + '<h1 class="ellipsis center bold">' + (i+1) + '</h1>';
+							display = display + '<div class="caption">';
+								display = display + '<h3 class="ellipsis center center">' + name + '</h1>';
+							display = display + '</div>';
+						display = display + '</div>';
+						display = display + '</a>';
+					display = display + '</div>';
+				}
+					display = display + '<div class="col-md-3">';
+						display = display + '<div class="thumbnail">';
+							display = display + '<a href="user/music.php">';
+							display = display + '<h1 class="ellipsis center bold">*</h1>';
+							display = display + '<div class="caption">';
+								display = display + '<h3 class="ellipsis center">More</h1>';
+							display = display + '</div>';
+						display = display + '</div>';
+						display = display + '</a>';
+					display = display + '</div>';
+			}
+			$('#movies').html(display);
+		});
+	}
+	function getPodcast () {
+		$(".notification").text('Loading...').show(100);
+		$.getJSON('api/podcast/podcast.getsubscription.php?apikey=tejpratap&limit=7&email=' + <?php echo "'".$_COOKIE['tljusername']."'" ?>, function(json, textStatus) {
+			$(".notification").hide(100);
+			if (json.status == 1) {
+				podcasts = json.podcasts;
+				// console.log(movies[0]);
+				display = "";
+				for (var i =  0; i < podcasts.length; i++) {
+					var m = "<div>" + podcasts[i] + "</div>";
+					name = $(m).children('name').first().text();
+					rss = $(m).children('rss').first().text();
+					display = display + '<div class="col-md-4">';
+						display = display + '<div class="thumbnail">';
+							display = display + '<a href="podcast/podcast.php?i='+ rss +'">';
+							display = display + '<h1 class="ellipsis center bold">' + (i+1) + '</h1>';
+							display = display + '<div class="caption">';
+								display = display + '<h3 class="ellipsis center">' + name + '</h1>';
+							display = display + '</div>';
+						display = display + '</div>';
+						display = display + '</a>';
+					display = display + '</div>';
+				}
+					display = display + '<div class="col-md-3">';
+						display = display + '<div class="thumbnail">';
+							display = display + '<a href="user/podcast.php">';
+							display = display + '<h1 class="ellipsis center bold">*</h1>';
+							display = display + '<div class="caption">';
+								display = display + '<h3 class="ellipsis center">More</h1>';
+							display = display + '</div>';
+						display = display + '</div>';
+						display = display + '</a>';
+					display = display + '</div>';
+			}
+			$('#podcast').html(display);
 		});
 	}
 	</script>
