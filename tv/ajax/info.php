@@ -36,7 +36,8 @@ if ($_GET ['i']) {
 
 		<div class="row">
 			<div class="col-md-6">
-			<button type="button" class="btn btn-lg btn-success full-width bottom" onclick="addToList(\'' . $Movie ['name'] . '\',\'' . $Movie ['id'] . '\')">Add To TO-DO</button>
+				<button type="button" id="add" class="btn btn-lg btn-success full-width bottom" onclick=\'addToList("' . str_replace("'","",$Movie ['name']) . '","' . $Movie ['id'] . '")\'>Add To TO-DO</button>
+				<button type="button" id="remove" class="btn btn-lg btn-danger full-width bottom" onclick=\'removeFromTodo("' . $Movie ['id'] . '")\' style="display: none;">Remove From TO-DO</button>
 			</div>
 			<div class="col-md-6">
 				<button type="button" class="btn btn-lg btn-primary full-width bottom" onclick="getTrailer()">Trailer</button>

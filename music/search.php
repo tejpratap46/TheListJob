@@ -77,6 +77,11 @@ error_reporting ( 0 );
 			<form action="soundcloud.php" method="get">
 				<input value="" id="searchText" name="q" onfocus="{this.value = '<?php echo $_GET['q']?>'}" onblur="{this.value = ''}" class="half-width" type="text" placeholder="Search On Soundcolud" />
 			</form>
+			<hr>
+			<div class="row">
+				<button id="add" class="btn btn-success full-width bold" onclick="addToTodo();">Save This Search</button>
+				<button id="remove" class="btn btn-danger full-width bold" onclick="addFromTodo();" style="display: none;">Remove From Saved</button>
+			</div>
 		</div>
 		<div class="jumbotron">
 			<div class="row" id="items"></div>
@@ -87,6 +92,7 @@ error_reporting ( 0 );
 					src="../images/loading.gif">
 			</div>
 		</div>
+		<div class="notification">Loading...</div>
 	</div>
 	<!-- /container -->
 	<!-- Bootstrap core JavaScript
@@ -109,7 +115,7 @@ error_reporting ( 0 );
 	        results = regex.exec(location.search);
 	    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 	}
-	
+
 	function ajaxCall(){
 		$("#loading").toggle(100);
 		var xmlhttp = new XMLHttpRequest();
@@ -122,6 +128,40 @@ error_reporting ( 0 );
 	    }
 	    xmlhttp.open("GET", "ajax/search.php?q=" + q, true);
 	    xmlhttp.send();
+	}
+
+	function addToTodo() {
+		name = q;
+		$(".notification").text('Loading...').show(100);
+		$.getJSON('../api/music/music.addtodo.php?apikey=tejpratap&name=<name>'+ name +'</name>&email=' + <?php echo "'".$_COOKIE['tljusername']."'"; ?>, {param1: 'value1'}, function(json, textStatus) {
+			$(".notification").hide(100);
+			if(json.status == 1){
+				$('.notification').text('Added').show(200).delay(3000).hide(200);
+				$("#add").hide();
+				$("#remove").show();
+			}else if (json.error.indexOf('Already') > -1) {
+				$('.notification').text('Already Added To TO-DO, Click Again To Romove Now?').show(200).delay(10000).hide(200);
+				$("#add").hide();
+				$("#remove").show();
+			}else{
+				$('.notification').text('Cannot Add : ' + json.error).show(200).delay(3000).hide(200);
+			}
+		});
+	}
+
+	function addFromTodo() {
+		name = q;
+		$(".notification").text('Loading...').show(100);
+		$.getJSON('../api/music/music.removetodo.php?apikey=tejpratap&name='+ name +'&email=' + <?php echo "'".$_COOKIE['tljusername']."'"; ?>, {param1: 'value1'}, function(json, textStatus) {
+			$(".notification").hide(100);
+			if (json.status == 1) {
+				$(".notification").text('Added').show(100).delay(3000).hide(100);
+				$("#add").show();
+				$("#remove").hide();
+			}else{
+				$(".notification").text('Error : ' + json.error).show(100).delay(3000).hide(100);
+			}
+		});
 	}
 	</script>
 </body>

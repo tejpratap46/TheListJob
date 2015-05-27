@@ -16,8 +16,8 @@ if ($email && $name && $id) {
 	$query = NULL;
 	if (mysql_num_rows($queryNull) > 0) {
 		$qArray = mysql_fetch_array($queryNull);
-		$id = $qArray['id'];
-		$query = mysql_query("UPDATE `". $email ."` SET `tvTodo`='<name>".$name."</name><id>".$id."</id>' WHERE id='" . $id . "'") or die('{"status":0,"error":"'.mysql_error().'"}');
+		$nullid = $qArray['id'];
+		$query = mysql_query("UPDATE `". $email ."` SET `tvTodo`='<name>".$name."</name><id>".$id."</id>' WHERE id='" . $nullid . "'") or die('{"status":0,"error":"'.mysql_error().'"}');
 	}else{
 		$query = mysql_query("INSERT INTO `". $email ."`(`tvTodo`) VALUES ('<name>".$name."</name><id>".$id."</id>')") or die('{"status":0,"error":"'.mysql_error().'"}');
 	}

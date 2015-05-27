@@ -75,6 +75,12 @@ error_reporting ( 0 );
 			<h1 class="bold">Movie Lists</h1>
 			<p>Movies Waiting For You.</p>
 		</div>
+
+		<div class="btn-group btn-group-justified">
+		  <a href="#categories" class="btn btn-primary bold">Categories</a>
+		  <a href="#genres" class="btn btn-danger bold">Genres</a>
+		</div>
+
 		<div class="jumbotron">
 			<div class="row" id="items">
 				<img class="center-image" alt="loading..."

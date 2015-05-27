@@ -11,7 +11,7 @@ error_reporting ( 0 );
 <meta name="author" content="">
 <link rel="icon" href="favicon.ico">
 
-<title>Music List</title>
+<title>Tv List</title>
 
 <!-- Bootstrap core CSS -->
 <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -72,13 +72,15 @@ error_reporting ( 0 );
 	<div class="container" style="width: 100%; margin-top: 70px;">
 		<!-- Main component for a primary marketing message or call to action -->
 		<div class="thumbnail center">
-			<h1 class="bold">Top Podcast</h1>
-			<p>Modern Day Radio.</p>
+			<h1 class="bold">Podcast Lists</h1>
+			<p>Podcast's : Modern Day Radios.</p>
 		</div>
+
+		<div class="btn-group btn-group-justified">
+			<a href="#items" class="btn btn-primary bold">All</a>
+		</div>
+
 		<div class="jumbotron">
-			<div class="row" id="items"></div>
-		</div>
-		<div class="jumbotron" id="loading">
 			<div class="row" id="items">
 				<img class="center-image" alt="loading..."
 					src="../images/loading.gif">
@@ -94,32 +96,16 @@ error_reporting ( 0 );
 	<script src="../js/bootstrap.min.js"></script>
 
 	<script type="text/javascript">
-	var q = getParameterByName('i');
 	setTimeout(function () {
-		$("#loading").toggle(100);
-		ajaxCall();
+	var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        	document.getElementById("items").innerHTML = xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open("GET", "ajax/lists.php", true);
+    xmlhttp.send();
 	}, 50);
-
-	function getParameterByName(name) {
-	    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-	    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-	        results = regex.exec(location.search);
-	    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-	}
-	
-	function ajaxCall(){
-		$("#loading").toggle(100);
-		var xmlhttp = new XMLHttpRequest();
-	    xmlhttp.onreadystatechange = function() {
-	        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-	        	var pre = document.getElementById("items").innerHTML;
-	        	document.getElementById("items").innerHTML =pre +  xmlhttp.responseText;
-	        	$("#loading").toggle(100);
-	        }
-	    }
-	    xmlhttp.open("GET", "ajax/top.php", true);
-	    xmlhttp.send();
-	}
 	</script>
 </body>
 </html>

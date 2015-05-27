@@ -72,7 +72,7 @@ error_reporting ( 0 );
 	<div class="container" style="width: 100%; margin-top: 70px;" id="info">
 		<img class="center-image" alt="loading..." src="../images/loading.gif">
 	</div>
-	
+
 	<div class="container" style="width: 100%;">
 		<div class="jumbotron no-padding">
 			<div class="row" id="imgs"></div>
@@ -81,7 +81,7 @@ error_reporting ( 0 );
 			<div class="row" id="items"></div>
 		</div>
 	</div>
-	
+
 	<div class='notification' style='display: none'>Loading...</div>
 
 	<!-- /container -->
@@ -131,15 +131,34 @@ error_reporting ( 0 );
 			$('.notification').hide();
 			if(json.status == 1){
 				$('.notification').text('Added').show(200).delay(3000).hide(200);
+				$("#add").hide();
+				$("#remove").show();
+			}else if (json.error.indexOf('Already') > -1) {
+				$('.notification').text('Already Added To TO-DO, Click Again To Romove Now?').show(200).delay(10000).hide(200);
+				$("#add").hide();
+				$("#remove").show();
 			}else{
 				$('.notification').text('Cannot Add : ' + json.error).show(200).delay(3000).hide(200);
 			}
 		});
 	}
 
+	function removeFromTodo(id){
+		$(".notification").text('Loading...').show(100);
+		$.getJSON('../api/movie/movie.removetodo.php?apikey=tejpratap&id='+ id +'&email=' + <?php echo "'".$_COOKIE['tljusername']."'" ?>, function(json, textStatus) {
+			if(json.status == 1){
+				$(".notification").text('Removed').delay(1000).hide(100);
+				$("#add").show();
+				$("#remove").hide();
+			}else{
+				$(".notification").text('Error : ' + json.error).delay(3000).hide(100);
+			}
+		});
+	}
+
 	var imgs = false;
 	var sim = false;
-	
+
 	$(window).scroll(function() {
 	   if($(window).scrollTop() + $(window).height() == $(document).height()) {
 			   if(!imgs){

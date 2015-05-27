@@ -33,6 +33,6 @@ if ($email && $name && $rss) {
 		die('{"status":0,"error":"Cannot Subscribe"}');
 	}
 }else{
-	die('{"status":0,"error":"Enter email,id,name"}');
+	die('{"status":0,"error":"Enter email,rss,name"}');
 }
 ?>

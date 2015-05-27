@@ -109,13 +109,32 @@ error_reporting ( 0 );
 		$.getJSON('../api/podcast/podcast.subscribe.php?apikey=tejpratap&email=' + <?php echo "'".$_COOKIE['tljusername']."'"; ?> + '&name=' + name + '&rss=' + rss, function(json, textStatus) {
 			$('.notification').hide();
 			if(json.status == 1){
-				$('.notification').text('Subscribed').show(200).delay(3000).hide(200);
+				$('.notification').text('Added').show(200).delay(3000).hide(200);
+				$("#add").hide();
+				$("#remove").show();
+			}else if (json.error.indexOf('Already') > -1) {
+				$('.notification').text('Already Added To TO-DO, Click Again To Romove Now?').show(200).delay(10000).hide(200);
+				$("#add").hide();
+				$("#remove").show();
 			}else{
-				$('.notification').text('Cannot Subscribed : ' + json.error).show(200).delay(3000).hide(200);
+				$('.notification').text('Cannot Add : ' + json.error).show(200).delay(3000).hide(200);
 			}
 		});
 	}
-	
+
+	function unsubscribe (rss) {
+		$(".notification").text('Loading...').show(100);
+		$.getJSON('../api/podcast/podcast.unsubscribe.php?apikey=tejpratap&rss='+ rss +'&email=' + <?php echo "'".$_COOKIE['tljusername']."'" ?>, function(json, textStatus) {
+			if(json.status == 1){
+				$(".notification").text('Removed').delay(1000).hide(100);
+				$("#add").show();
+				$("#remove").hide();
+			}else{
+				$(".notification").text('Error : ' + json.error).delay(3000).hide(100);
+			}
+		});
+	}
+
 	function ajaxCall(){
 		$("#loading").toggle(100);
 		var xmlhttp = new XMLHttpRequest();

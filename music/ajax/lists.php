@@ -40,6 +40,19 @@ $artistUrl = array (
 	'topartists'
 );
 
+$youtubeTitle = array(
+	'Latest',
+	'Top Pop',
+	'Top Rock',
+	'Top Country'
+);
+$youtubeUrl = array (
+	'latest',
+	'pop',
+	'rock',
+	'country'
+);
+
 $genre = array (
 		"Alternative",
 		"Classical",
@@ -70,7 +83,7 @@ $genreUrl = array (
 		"16"
 		);
 
-echo '<div class="thumbnail center"><h1 class="bold">Top Tracks</h1></div>';
+echo '<div id="tracks" class="thumbnail center"><h1 class="bold">Top Tracks</h1></div>';
 
 for($i = 0; $i < count ( $trackTitle ); $i ++) {
 	if ($i % 3 == 0) {
@@ -88,7 +101,7 @@ for($i = 0; $i < count ( $trackTitle ); $i ++) {
 	}
 }
 
-echo '<hr><div class="thumbnail center"><h1 class="bold">Top Tracks By Genre</h1></div>';
+echo '<hr><div id="tracksgenre" class="thumbnail center"><h1 class="bold">Top Tracks By Genre</h1></div>';
 
 for($i = 0; $i < count ( $genre ); $i ++) {
 	if ($i % 3 == 0) {
@@ -106,7 +119,7 @@ for($i = 0; $i < count ( $genre ); $i ++) {
 	}
 }
 
-echo '<hr><div class="thumbnail center"><h1 class="bold">Top Albums</h1></div>';
+echo '<hr><div id="albums" class="thumbnail center"><h1 class="bold">Top Albums</h1></div>';
 
 for($i = 0; $i < count ( $albumTitle ); $i ++) {
 	if ($i % 3 == 0) {
@@ -123,7 +136,7 @@ for($i = 0; $i < count ( $albumTitle ); $i ++) {
 		echo '</div>';
 	}
 }
-echo '<hr><div class="thumbnail center"><h1 class="bold">Top Albums By Genre</h1></div>';
+echo '<hr><div id="albumsgenre" class="thumbnail center"><h1 class="bold">Top Albums By Genre</h1></div>';
 
 for($i = 0; $i < count ( $genre ); $i ++) {
 	if ($i % 3 == 0) {
@@ -141,7 +154,7 @@ for($i = 0; $i < count ( $genre ); $i ++) {
 	}
 }
 
-echo '<hr><div class="thumbnail center"><h1 class="bold">Top Artists</h1></div>';
+echo '<hr><div id="artists" class="thumbnail center"><h1 class="bold">Top Artists</h1></div>';
 
 for($i = 0; $i < count ( $artistTitle ); $i ++) {
 	if ($i % 3 == 0) {
@@ -155,6 +168,24 @@ for($i = 0; $i < count ( $artistTitle ); $i ++) {
 					</div></a>
 				</div>';
 	if ($i % 3 == 2 || $i == count ( $artistTitle )-1) {
+		echo '</div>';
+	}
+}
+
+echo '<hr><div id="youtube" class="thumbnail center"><h1 class="bold">Top On Youtube</h1></div>';
+
+for($i = 0; $i < count ( $youtubeTitle ); $i ++) {
+	if ($i % 3 == 0) {
+		echo '<div class="row">';
+	}
+	echo '<div class="col-sm-6 col-md-4">
+					<a href="youtube.php?q=' . $youtubeUrl [$i] . '"><div class="thumbnail">
+						<div class="caption">
+							<h2 class="center ellipsis">' . $youtubeTitle [$i] . '</h2>
+						</div>
+					</div></a>
+				</div>';
+	if ($i % 3 == 2 || $i == count ( $youtubeTitle )-1) {
 		echo '</div>';
 	}
 }

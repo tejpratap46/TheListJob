@@ -15,7 +15,7 @@ $url = array (
 		"upcoming",
 		"nowplaying",
 		"imdb250",
-		"discover" 
+		"discover"
 );
 
 $titleGenre = array (
@@ -64,7 +64,7 @@ $urlGenre = array (
 		"37"
 );
 
-echo '<div class="thumbnail center"><h1 class="bold">Categories</h1></div>';
+echo '<div id="categories" class="thumbnail center"><h1 class="bold">Categories</h1></div>';
 
 for($i = 0; $i < count ( $title ); $i ++) {
 	if ($i % 3 == 0) {
@@ -83,7 +83,7 @@ for($i = 0; $i < count ( $title ); $i ++) {
 	}
 }
 
-echo '<hr><div class="thumbnail center"><h1 class="bold">Genres</h1></div>';
+echo '<hr><div id="genres" class="thumbnail center"><h1 class="bold">Genres</h1></div>';
 
 for($i = 0; $i < count ( $urlGenre ); $i ++) {
 	if ($i % 3 == 0) {

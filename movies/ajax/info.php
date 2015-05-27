@@ -31,12 +31,14 @@ if ($_GET ['i']) {
 				<div class="col-md-7 center">
 					<h1 class="center-vertical ellipsis bold" style="font-size: 7em;">' . $Movie ['original_title'] . '</h1>
 					<p class="center-vertical">"' . $Movie ['tagline'] . '"</p>
+					<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://brainstrom.zz.mu/TheListJob/movies/movie.php?i='.$_GET['i'].'">share to facebook</a>
 				</div>
 			</div>
 		</div>
 		<div class="row well">
 			<div class="col-md-6">
-				<button type="button" class="btn btn-lg btn-success full-width bottom" onclick="addToList(\'' . $Movie ['original_title'] . '\',\'' . $Movie ['imdb_id'] . '\')">Add To TO-DO</button>
+				<button type="button" id="add" class="btn btn-lg btn-success full-width bottom" onclick="addToList(\'' . str_replace("'","",$Movie ['original_title']) . '\',\'' . $Movie ['imdb_id'] . '\')">Add To TO-DO</button>
+				<button type="button" id="remove" class="btn btn-lg btn-danger full-width bottom" onclick="removeFromTodo(\'' . $Movie ['imdb_id'] . '\')" style="display: none;">Remove From TO-DO</button>
 			</div>
 			<div class="col-md-6">
 				<button type="button" class="btn btn-lg btn-primary full-width bottom" onclick="getTrailer()">Trailer</button>

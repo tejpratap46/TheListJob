@@ -38,11 +38,11 @@ if (!isset($_COOKIE['tljusername'])) {
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="index.php">Home</a></li>
-					<li><a href="movies">Movies</a></li>
-					<li><a href="tv">Tv Shows</a></li>
-					<li><a href="music">Music</a></li>
-					<li><a href="podcast">Podcast</a></li>
+					<li><a href="../index.php">Home</a></li>
+					<li><a href="../movies">Movies</a></li>
+					<li><a href="../tv">Tv Shows</a></li>
+					<li><a href="../music">Music</a></li>
+					<li><a href="../podcast">Podcast</a></li>
 					<!-- 					<form class="navbar-form navbar-left" role="search"> -->
 					<!-- 						<div class="form-group"> -->
 					<!-- 							<input type="text" class="form-control" placeholder="Search"> -->
@@ -55,10 +55,10 @@ if (!isset($_COOKIE['tljusername'])) {
 				if ($_COOKIE ['tljusername']) {
 					echo "<li class='dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-expanded='false'>" . $_COOKIE ['tljusername'] . "<span class='caret'></span></a>";
 					echo "<ul class='dropdown-menu' role='menu'>";
-					echo "<li><a href='profile.php'>Profile</a></li>";
+					echo "<li><a href='../profile.php'>Profile</a></li>";
 					echo "<li class='divider'></li>";
 					echo "<li class='dropdown-header'>Say Good Bye</li>";
-					echo "<li><a href='logout.php'>Logout</a></li>";
+					echo "<li><a href='../logout.php'>Logout</a></li>";
 					echo "</ul>";
 					echo "</li>";
 				} else {
@@ -117,8 +117,9 @@ if (!isset($_COOKIE['tljusername'])) {
 							display = display + '<div class="caption">';
 								display = display + '<h3 class="ellipsis">' + name + '</h1>';
 							display = display + '</div>';
+							display = display + '</a>';
+							display = display + '<div class="row"><button class="btn btn-danger full-width bold" id="unsubscribe" >Remove</button></div>'
 						display = display + '</div>';
-						display = display + '</a>';
 					display = display + '</div>';
 				}
 			}else{
@@ -127,6 +128,24 @@ if (!isset($_COOKIE['tljusername'])) {
 			$('#movies').html(display);
 		});
 	}
+
+	// To hide the item after it is removed, i have to get its 'this' vatiable
+	$(document).click(function(e) {
+    $id = $(e.target).attr('id');
+    if ($id == 'unsubscribe') {
+			id = $(e.target).parent().parent().children('a').first().attr('href');
+			id = id.split("=")[1];
+			$(".notification").text('Loading...').show(100);
+			$.getJSON('../api/movie/movie.removetodo.php?apikey=tejpratap&id='+ id +'&email=' + <?php echo "'".$_COOKIE['tljusername']."'" ?>, function(json, textStatus) {
+				if(json.status == 1){
+					$(e.target).parent().parent().parent().html('');
+					$(".notification").text('Removed').delay(1000).hide(100);
+				}else{
+					$(".notification").text('Error : ' + json.error).delay(3000).hide(100);
+				}
+			});
+    }
+  });
 	</script>
 </body>
 </html>

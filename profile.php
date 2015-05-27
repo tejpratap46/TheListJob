@@ -79,19 +79,31 @@ if (!isset($_COOKIE['tljusername'])) {
 			<h1 class="bold" style="color: white;"><?php echo $_COOKIE['tljusername']; ?></h1>
 			<p>Great Stuff To Do Next Only For You.</p>
 		</div>
-		<div>
+
+		<div class="btn-group btn-group-justified">
+		  <a href="#movies" class="btn btn-primary bold">Movies</a>
+		  <a href="#tv" class="btn btn-success bold">Tv</a>
+			<a href="#music" class="btn btn-info bold">Music</a>
+		  <a href="#podcast" class="btn btn-danger bold">Podcast</a>
+		</div>
+
+		<hr>
+		<div class="well">
 			<div class="thumbnail center"><h1 class="bold">Movies TO-DO</h1></div>
 			<div class="row" id="movies"></div>
 		</div>
-		<div>
+		<hr>
+		<div class="well">
 			<div class="thumbnail center"><h1 class="bold">TV Show's Following</h1></div>
 			<div class="row" id="tv"></div>
 		</div>
-		<div>
+		<hr>
+		<div class="well">
 			<div class="thumbnail center"><h1 class="bold">Music Intrested In</h1></div>
 			<div class="row" id="music"></div>
 		</div>
-		<div>
+		<hr>
+		<div class="well">
 			<div class="thumbnail center"><h1 class="bold">Podcast's Subscribed</h1></div>
 			<div class="row" id="podcast"></div>
 		</div>
@@ -108,6 +120,7 @@ if (!isset($_COOKIE['tljusername'])) {
 		getMovies();
 		getPodcast();
 		getTv();
+		getMusic();
 	}, 50);
 
 	function getMovies () {
@@ -117,7 +130,7 @@ if (!isset($_COOKIE['tljusername'])) {
 			if (json.status == 1) {
 				movies = json.movies;
 				// console.log(movies[0]);
-				display = "";
+				display = '<div class="well row"><h2 class="center bold">Total : ' + json.total + ' Movies</h2></div>';
 				for (var i =  0; i < movies.length; i++) {
 					var m = "<div>" + movies[i] + "</div>";
 					name = $(m).children('name').first().text();
@@ -154,12 +167,12 @@ if (!isset($_COOKIE['tljusername'])) {
 			if (json.status == 1) {
 				tvs = json.tvs;
 				// console.log(movies[0]);
-				display = "";
+				display = '<div class="well row"><h2 class="center bold">Total : ' + json.total + ' Shows</h2></div>';
 				for (var i =  0; i < tvs.length; i++) {
 					var m = "<div>" + tvs[i] + "</div>";
 					name = $(m).children('name').first().text();
 					id = $(m).children('id').first().text();
-					display = display + '<div class="col-md-4">';
+					display = display + '<div class="col-md-3">';
 						display = display + '<div class="thumbnail">';
 							display = display + '<a href="tv/movie.php?i='+ id +'">';
 							display = display + '<h1 class="ellipsis center bold">' + (i+1) + '</h1>';
@@ -186,19 +199,19 @@ if (!isset($_COOKIE['tljusername'])) {
 	}
 	function getMusic () {
 		$(".notification").text('Loading...').show(100);
-		$.getJSON('api/movie/movie.gettodo.php?apikey=tejpratap&email=' + <?php echo "'".$_COOKIE['tljusername']."'" ?>, function(json, textStatus) {
+		$.getJSON('api/music/music.gettodo.php?apikey=tejpratap&email=' + <?php echo "'".$_COOKIE['tljusername']."'" ?>, function(json, textStatus) {
 			$(".notification").hide(100);
 			if (json.status == 1) {
-				movies = json.movies;
+				music = json.music;
 				// console.log(movies[0]);
-				display = "";
-				for (var i =  0; i < movies.length; i++) {
-					var m = "<div>" + movies[i] + "</div>";
+				display = '<div class="well row"><h2 class="center bold">Total : ' + json.total + ' Music</h2></div>';
+				for (var i =  0; i < music.length; i++) {
+					var m = "<div>" + music[i] + "</div>";
 					name = $(m).children('name').first().text();
 					id = $(m).children('id').first().text();
-					display = display + '<div class="col-md-4">';
+					display = display + '<div class="col-md-3">';
 						display = display + '<div class="thumbnail">';
-							display = display + '<a href="movies/movie.php?i='+ id +'">';
+							display = display + '<a href="music/search.php?q='+ name +'">';
 							display = display + '<h1 class="ellipsis center bold">' + (i+1) + '</h1>';
 							display = display + '<div class="caption">';
 								display = display + '<h3 class="ellipsis center center">' + name + '</h1>';
@@ -218,7 +231,7 @@ if (!isset($_COOKIE['tljusername'])) {
 						display = display + '</a>';
 					display = display + '</div>';
 			}
-			$('#movies').html(display);
+			$('#music').html(display);
 		});
 	}
 	function getPodcast () {
@@ -228,12 +241,12 @@ if (!isset($_COOKIE['tljusername'])) {
 			if (json.status == 1) {
 				podcasts = json.podcasts;
 				// console.log(movies[0]);
-				display = "";
+				display = '<div class="well row"><h2 class="center bold">Total : ' + json.total + ' Channels</h2></div>';
 				for (var i =  0; i < podcasts.length; i++) {
 					var m = "<div>" + podcasts[i] + "</div>";
 					name = $(m).children('name').first().text();
 					rss = $(m).children('rss').first().text();
-					display = display + '<div class="col-md-4">';
+					display = display + '<div class="col-md-3">';
 						display = display + '<div class="thumbnail">';
 							display = display + '<a href="podcast/podcast.php?i='+ rss +'">';
 							display = display + '<h1 class="ellipsis center bold">' + (i+1) + '</h1>';

@@ -75,6 +75,11 @@ error_reporting ( 0 );
 			<h1 class="bold">Tv Lists</h1>
 			<p>Shows Waiting For You.</p>
 		</div>
+
+		<div class="btn-group btn-group-justified">
+			<a href="#items" class="btn btn-primary bold">All</a>
+		</div>
+
 		<div class="jumbotron">
 			<div class="row" id="items">
 				<img class="center-image" alt="loading..."

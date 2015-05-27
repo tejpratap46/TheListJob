@@ -75,6 +75,8 @@ error_reporting ( 0 );
 			<h1 class="bold">Music Lists</h1>
 			<p>Music We All Love.</p>
 		</div>
+
+
 		<div class="jumbotron">
 			<div class="row" id="items"></div>
 		</div>
@@ -106,7 +108,7 @@ error_reporting ( 0 );
 	        results = regex.exec(location.search);
 	    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 	}
-	
+
 	function ajaxCall(){
 		$("#loading").toggle(100);
 		var xmlhttp = new XMLHttpRequest();

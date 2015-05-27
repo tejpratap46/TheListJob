@@ -9,7 +9,7 @@ if (! $limit) {
 
 if ($_GET['email']) {
 	$email = md5($_GET['email']);
-	$query = "SELECT COUNT(*) as num FROM $email WHERE movieTodo IS NOT NULL";
+	$query = "SELECT COUNT(*) as num FROM $email WHERE musicTodo IS NOT NULL";
 
 	$total_pages = mysql_fetch_array ( mysql_query ( $query ) );
 	$total = $total_pages ['num'];

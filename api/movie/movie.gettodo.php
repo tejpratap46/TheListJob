@@ -5,7 +5,7 @@ $email = $_GET['email'];
 
 if ($email) {
 	$table = md5($email);
-	$query = mysql_query("SELECT movieTodo FROM $table WHERE 'movieTodo' IS NOT NULL LIMIT $start,$limit")  or die('{"status":0,"error":"'.mysql_error().'"}');
+	$query = mysql_query("SELECT movieTodo FROM $table WHERE movieTodo IS NOT NULL LIMIT $start,$limit")  or die('{"status":0,"error":"'.mysql_error().'"}');
 	if ($query) {
 		$num = mysql_num_rows($query);
 		echo "{";

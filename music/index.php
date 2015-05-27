@@ -75,6 +75,17 @@ error_reporting ( 0 );
 			<h1 class="bold">Music Lists</h1>
 			<p>Music We All Love.</p>
 		</div>
+
+
+		<div class="btn-group btn-group-justified">
+			<a href="#tracks" class="btn btn-primary bold">Tracks</a>
+			<a href="#tracksgenre" class="btn btn-success bold">Tracks By Genre</a>
+			<a href="#albums" class="btn btn-info bold">Albums</a>
+			<a href="#albumsgenre" class="btn btn-success bold">Albums By Genre</a>
+			<a href="#artists" class="btn btn-info bold">Artists</a>
+			<a href="#youtube" class="btn btn-danger bold">Youtube</a>
+		</div>
+
 		<div class="jumbotron">
 			<div class="row" id="items">
 				<img class="center-image" alt="loading..."

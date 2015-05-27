@@ -7,7 +7,7 @@ $id = $_GET['id'];
 
 if ($email && $name && $id) {
 	$email = md5($email);
-	$queryCheck = mysql_query("SELECT id FROM `". $email ."` WHERE `movieTodo` LIKE '%" . $name . "%'") or die('{"status":0,"error":"'.mysql_error().'"}');
+	$queryCheck = mysql_query("SELECT id FROM `". $email ."` WHERE `movieTodo` LIKE '%" . $id . "%'") or die('{"status":0,"error":"'.mysql_error().'"}');
 	if (mysql_num_rows($queryCheck) > 0) {
 		die('{"status":0,"error":"You Already Added"}');
 	}
@@ -16,8 +16,8 @@ if ($email && $name && $id) {
 	$query = NULL;
 	if (mysql_num_rows($queryNull) > 0) {
 		$qArray = mysql_fetch_array($queryNull);
-		$id = $qArray['id'];
-		$query = mysql_query("UPDATE `". $email ."` SET `movieTodo`='<name>".$name."</name><id>".$id."</id>' WHERE id='" . $id . "'") or die('{"status":0,"error":"'.mysql_error().'"}');
+		$nullid = $qArray['id'];
+		$query = mysql_query("UPDATE `". $email ."` SET `movieTodo`='<name>".$name."</name><id>".$id."</id>' WHERE id='" . $nullid . "'") or die('{"status":0,"error":"'.mysql_error().'"}');
 	}else{
 		$query = mysql_query("INSERT INTO `". $email ."`(`movieTodo`) VALUES ('<name>".$name."</name><id>".$id."</id>')") or die('{"status":0,"error":"'.mysql_error().'"}');
 	}

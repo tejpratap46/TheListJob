@@ -75,6 +75,7 @@ error_reporting ( 0 );
 			<h1 class="bold">Tv Lists</h1>
 			<p>Tv Shows For You.</p>
 		</div>
+
 		<div class="jumbotron">
 			<div class="row" id="items"></div>
 		</div>
@@ -114,7 +115,7 @@ error_reporting ( 0 );
 		   ajaxCall(pg);
 	   }
 	});
-	
+
 	function ajaxCall(p){
 		$("#loading").toggle(100);
 		var xmlhttp = new XMLHttpRequest();

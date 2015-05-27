@@ -1,5 +1,5 @@
 <?php
-// error_reporting ( 0 );
+error_reporting ( 0 );
 $q = $_GET ['q'];
 if ($q) {
 	$url = 'http://ajax.googleapis.com/ajax/services/feed/load?v=2.0&q=' . $q .'&num=200';
@@ -15,7 +15,7 @@ if ($q) {
 					'contentSnippet' => $item->contentSnippet,
 					'author' => $item->author,
 					'publishedDate' => $item->publishedDate,
-					'track' => $item->link 
+					'track' => $item->link
 			);
 		}
 	}
@@ -25,7 +25,8 @@ echo '<div class="thumbnail center row">
 			<h1 class="bold">' . $name . '</h1>
 			<p>' . $description . '</p>
 			<div class="thumbnail row">
-				<button class="btn btn-primary half-width" onclick="subscribe(\'' . $name . '\',\'' . $url . '\')">Subscribe</button>
+				<button id="add" class="btn btn-success half-width" onclick="subscribe(\'' . $name . '\',\'' . $url . '\')">Subscribe</button>
+				<button id="remove" class="btn btn-danger half-width" onclick="unsubscribe(\'' . $url . '\')" style="display: none;">UnSubscribe</button>
 			</div>
 			<a target="_blank" href="' . $link . '">Website</a>
 		</div>';

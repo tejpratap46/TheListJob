@@ -13,6 +13,7 @@ if ($email && $password) {
 										movieTodo VARCHAR(1000),
 										tvTodo VARCHAR(1000),
 										podcastTodo VARCHAR(1000),
+										musicTodo VARCHAR(1000),
 										musicPlaylist VARCHAR(1000),
 										podcastPlaylist VARCHAR(1000),
 										dummy1 VARCHAR(1000),
