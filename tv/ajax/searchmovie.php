@@ -13,7 +13,7 @@ if ($_GET ['q']) {
 					<a href="movie.php?i=' . $Movies ['results'] [$i] ['id'] . '"><div class="thumbnail">
 						<img style="width: 100%;" src="http://image.tmdb.org/t/p/w185' . $Movies ['results'] [$i] ['poster_path'] . '" alt="' . $Movies ['results'] [$i] ['original_name'] . '">
 						<div class="caption">
-							<h2 class="center ellipsis">' . $Movies ['results'] [$i] ['original_name'] . '</h2>
+							<h2 class="center ellipsis" title="' . $Movies ['results'] [$i] ['original_name'] . '">' . $Movies ['results'] [$i] ['original_name'] . '</h2>
 							<p class="center ellipsis">' . $Movies ['results'] [$i] ['first_air_date'] . '</p>
 						</div>
 					</div></a>

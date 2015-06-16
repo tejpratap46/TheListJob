@@ -24,7 +24,7 @@ for($i = 0; $i < count ( $results ); $i ++) {
 								<img style="width: 100%;" src="' . $results [$i] ['img'] . '" alt="' . $results [$i] ['title'] . '">
 							</div>
 							<div class="caption">
-								<h2 class="center ellipsis">' . $results [$i] ['title'] . '</h2>
+								<h2 class="center ellipsis" title="' . $results [$i] ['title'] . '">' . $results [$i] ['title'] . '</h2>
 							</div>
 						</div>
 					</a>

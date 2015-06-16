@@ -16,7 +16,7 @@ if ($_GET['p'] == 1) {
 								<h1 class="center bold">'.($i + 1).'</h1>
 								<div class="caption">
 									<h2 class="center ellipsis">' . $Movies [$i]->{'title'} . '</h2>
-									<p class="center ellipsis">' . $Movies [$i]->{'contentSnippet'} . '</p>
+									<p class="center ellipsis" title="' . $Movies [$i]->{'contentSnippet'} . '">' . $Movies [$i]->{'contentSnippet'} . '</p>
 								</div>
 							</div>
 						</a>

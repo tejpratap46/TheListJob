@@ -35,7 +35,7 @@ for($i = 0; $i < count ( $results ); $i ++) {
 						<a href="clouduser.php?i=' . $results [$i] ['user'] . '" >
 							<img style="width: 100%;" src="' . $img . '" alt="' . $results [$i] ['title'] . '">
 							<div class="caption">
-								<h2 class="center ellipsis">' . $results [$i] ['title'] . '</h2>
+								<h2 class="center ellipsis" title="' . $results [$i] ['title'] . '">' . $results [$i] ['title'] . '</h2>
 							</div>
 						</a>
 						<audio style="width: 100%;" controls="controls" preload="none">

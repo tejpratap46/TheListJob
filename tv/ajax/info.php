@@ -9,7 +9,7 @@ if ($_GET ['i']) {
 	echo '<div class="thumbnail center">
 			<div class="row">
 				<div class="col-md-12">
-					<h1 class="center bold">' . $Movie ['name'] . '</h1>
+					<h1 id="name" class="center bold">' . $Movie ['name'] . '</h1>
 				</div>
 			</div>
 		</div>
@@ -43,6 +43,9 @@ if ($_GET ['i']) {
 				<button type="button" class="btn btn-lg btn-primary full-width bottom" onclick="getTrailer()">Trailer</button>
 			</div>
 		</div>
+
+		<hr>		
+		<div id="quick_info" class="row thumbnail"></div>
 
 		<div id="trailer"></div>
 		<div class="jumbotron no-padding">

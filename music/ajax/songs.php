@@ -30,7 +30,7 @@ for($i = 0; $i < count ( $results ); $i ++) {
 					<div class="thumbnail">
 						<img style="width: 100%;" src="' . $results [$i] ['img'] . '" alt="' . $results [$i] ['title'] . '">
 						<div class="caption">
-							<h2 class="center ellipsis">' . $results [$i] ['title'] . '</h2>
+							<h2 class="center ellipsis" title="' . $results [$i] ['title'] . '">' . $results [$i] ['title'] . '</h2>
 							<p class="center ellipsis">' . $results [$i] ['collection'] . '</p>
 							<a style="background:black;" href="'.$results [$i] ['url'].'"><img style="height:30px;" src="itunes.jpg" alt="On iTunes"></a>
 							<audio style="width: 100%;" controls="controls" preload="none">

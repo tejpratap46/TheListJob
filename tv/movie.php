@@ -96,6 +96,7 @@ error_reporting ( 0 );
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
         	document.getElementById("info").innerHTML = xmlhttp.responseText;
+        	getQuickInfo();
         }
     }
     xmlhttp.open("GET", "ajax/info.php?i=" + i, true);
@@ -153,6 +154,33 @@ error_reporting ( 0 );
 	    xmlhttp.send();
 	}
 
+	function getQuickInfo() {
+		console.log('quickinfo');
+		name = $('#name').text();		$('.notification').text('Loading...').show(100);
+		$.getJSON('ajax/quickinfo.php?q=' + name, function(json, textStatus) {
+			$('.notification').hide(100);
+			display = '';
+			if (json.status == 1) {
+				display += '<div class="row">';
+				display += '<div class="col-md-3 center"><h2 class="bold">Is A '+ json.show_status +'</h2></div>';
+				display += '<div class="col-md-3 center"><h5 class="bold">Latest Episode<br />' + json.latest_episode[0] + '<br />' + json.latest_episode[1] + '<br />' + json.latest_episode[2] +'</h5></div>';
+				try{
+					display += '<div class="col-md-3 center"><h5 class="bold">Next Episode<br />' + json.next_episode[0] + '<br />' + json.next_episode[1] + '<br />' + json.next_episode[2] +'</h5></div>';
+				}catch(err){
+					display += '<div class="col-md-3 center"></div>';
+				}
+				display += '<div class="col-md-3 center"><h1 class="bold">On '+ json.network +'</h1></div>';
+				display += '</div>';
+				display += '<div class="row">';
+				display += '<div class="col-md-4 center"><h2 class="bold">For '+ json.runtime +' min</h1></div>';
+				display += '<div class="col-md-4 center"><h3 class="bold">'+ json.classification +'</h1></div>';
+				display += '<div class="col-md-4 center"><h3 class="bold">'+ json.genres +'</h1></div>';
+				display += '</div>';
+				$('#quick_info').html(display);
+			}
+		});
+	}
+
 	var sim = false;
 
 	$(window).scroll(function() {
@@ -165,7 +193,8 @@ error_reporting ( 0 );
 		        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 		        	$('.notification').toggle();
 		        	document.getElementById("items").innerHTML = xmlhttp.responseText;
-		        }	    }
+		        }
+		    }
 		    xmlhttp.open("GET", "ajax/similar.php?i=" + i, true);
 		    xmlhttp.send();
 		    sim = true;

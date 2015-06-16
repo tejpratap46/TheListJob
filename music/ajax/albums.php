@@ -29,7 +29,7 @@ for($i = 0; $i < count ( $results ); $i ++) {
 					<a href="songs.php?i=' . $results [$i] ['collectionid'] . '"><div class="thumbnail">
 						<img style="width: 100%;" src="' . $results [$i] ['img'] . '" alt="' . $results [$i] ['title'] . '">
 						<div class="caption">
-							<h2 class="center ellipsis">' . $results [$i] ['title'] . '</h2>
+							<h2 class="center ellipsis" title="' . $results [$i] ['title'] . '">' . $results [$i] ['title'] . '</h2>
 							<p class="center ellipsis">' . $results [$i] ['text'] . '</p>
 						</div>
 					</div></a>
