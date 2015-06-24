@@ -9,7 +9,7 @@ error_reporting ( 0 );
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="icon" href="favicon.ico">
+<link rel="shortcut icon" type="image/png" href="../favicon.png"/>
 
 <title>Movie Lists</title>
 

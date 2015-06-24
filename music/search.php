@@ -9,7 +9,7 @@ error_reporting ( 0 );
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="icon" href="favicon.ico">
+<link rel="shortcut icon" type="image/png" href="../favicon.png"/>
 
 <title>Music List</title>
 
@@ -133,7 +133,7 @@ error_reporting ( 0 );
 	function addToTodo() {
 		name = q;
 		$(".notification").text('Loading...').show(100);
-		$.getJSON('../api/music/music.addtodo.php?apikey=tejpratap&name=<name>'+ name +'</name>&email=' + <?php echo "'".$_COOKIE['tljusername']."'"; ?>, {param1: 'value1'}, function(json, textStatus) {
+		$.getJSON('../api/music/music.addtodo.php?apikey=tejpratap&name='+ name +'&email=' + <?php echo "'".$_COOKIE['tljusername']."'"; ?>, {param1: 'value1'}, function(json, textStatus) {
 			$(".notification").hide(100);
 			if(json.status == 1){
 				$('.notification').text('Added').show(200).delay(3000).hide(200);
@@ -149,13 +149,38 @@ error_reporting ( 0 );
 		});
 	}
 
+	function addToPlaylist(name,url) {
+		$(".notification").text('Loading...').show(100);
+		$.getJSON('../api/music/music.addtoplaylist.php?apikey=tejpratap&name='+ name +'&url='+ url +'&email=' + <?php echo "'".$_COOKIE['tljusername']."'"; ?>, {param1: 'value1'}, function(json, textStatus) {
+			$(".notification").hide(100);
+			if(json.status == 1){
+				$('.notification').text('Added').show(200).delay(3000).hide(200);
+				$("#add").hide();
+				$("#remove").show();
+			}else if (json.error.indexOf('Already') > -1) {
+				$('.notification').text('Already Added To TO-DO, Click Again To Romove Now?').show(200).delay(10000).hide(200);
+				$("#add").hide();
+				$("#remove").show();
+			}else{
+				$('.notification').text('Cannot Add : ' + json.error).show(200).delay(3000).hide(200);
+			}
+		});
+	}
+
+	$(document).click(function(event) {
+		id = $(event.target).attr('id');
+		if (id == 'addtoplaylist') {
+			addToPlaylist('name','url');
+		}
+	});
+
 	function addFromTodo() {
 		name = q;
 		$(".notification").text('Loading...').show(100);
 		$.getJSON('../api/music/music.removetodo.php?apikey=tejpratap&name='+ name +'&email=' + <?php echo "'".$_COOKIE['tljusername']."'"; ?>, {param1: 'value1'}, function(json, textStatus) {
 			$(".notification").hide(100);
 			if (json.status == 1) {
-				$(".notification").text('Added').show(100).delay(3000).hide(100);
+				$(".notification").text('Removed').show(100).delay(3000).hide(100);
 				$("#add").show();
 				$("#remove").hide();
 			}else{

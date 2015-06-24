@@ -11,7 +11,7 @@ if (isset($_COOKIE['tljusername'])) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="icon" href="favicon.ico">
+<link rel="shortcut icon" type="image/png" href="favicon.png"/>
 
 <title>The List Job :: Signin</title>
 
@@ -23,12 +23,12 @@ if (isset($_COOKIE['tljusername'])) {
 <link href="signin.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="jumbotron">
 	<div class="container">
 		<div class="row center">
 			<a href="index.php"><h1 class="form-signin-heading bold" >The List Job</h1></a>
 		</div>
-		<form class="form-signin thumbnail" method="post">
+		<form class="form-signin thumbnail" id="loginForm" onsubmit="login();">
 			<h1 class="form-signin-heading">Login</h1>
 			<label for="inputEmail" class="sr-only">Email address</label>
 			<input id="email" type="email" name="email" class="form-control" placeholder="Email address" required autofocus>
@@ -36,7 +36,7 @@ if (isset($_COOKIE['tljusername'])) {
 			<input id="password" type="password" name="password" class="form-control" placeholder="Password" required>
 			<div class="row">
 				<div class="col-md-6">
-					<button class="btn btn-lg btn-primary btn-block" type="button" onclick="login();">Log in</button>
+					<input type="submit" class="btn btn-lg btn-primary btn-block" type="button" onclick="login();" value="Log in" />
 				</div>
 				<div class="col-md-6">
 					<button class="btn btn-lg btn-success btn-block" type="button" onclick="register();">Register</button>
@@ -49,6 +49,10 @@ if (isset($_COOKIE['tljusername'])) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="js/jquery.cookie.js"></script>
 <script type="text/javascript">
+	$('#loginForm').submit(function(){
+		return false;
+	});
+
 	function login () {
 		$('.notification').text('Loading...').show();
 		email = $('#email').val();
