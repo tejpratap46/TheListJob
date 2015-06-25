@@ -12,6 +12,10 @@
 	background: #E9EAED;
 }
 
+.hide {
+	display: none;
+}
+
 .height-30px {
 	height: 30px;
 }

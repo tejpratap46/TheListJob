@@ -40,7 +40,7 @@ if (!isset($_COOKIE['tljusername'])) {
 				<ul class="nav navbar-nav">
 					<li><a href="../index.php">Home</a></li>
 					<li><a href="../movies">Movies</a></li>
-					<li><a href="../../tv">Tv Shows</a></li>
+					<li><a href="../tv">Tv Shows</a></li>
 					<li><a href="../music">Music</a></li>
 					<li><a href="../podcast">Podcast</a></li>
 					<!-- 					<form class="navbar-form navbar-left" role="search"> -->

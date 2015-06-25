@@ -40,7 +40,7 @@ if (!isset($_COOKIE['tljusername'])) {
 				<ul class="nav navbar-nav">
 					<li><a href="../index.php">Home</a></li>
 					<li><a href="../movies">Movies</a></li>
-					<li><a href="../../tv">Tv Shows</a></li>
+					<li><a href="../tv">Tv Shows</a></li>
 					<li><a href="../music">Music</a></li>
 					<li><a href="../podcast">Podcast</a></li>
 					<!-- 					<form class="navbar-form navbar-left" role="search"> -->
@@ -74,7 +74,7 @@ if (!isset($_COOKIE['tljusername'])) {
 	<div class="container" style="width: 100%; margin-top: 50px;">
 		<!-- Main component for a primary marketing message or call to action -->
 		<div>
-      <div class="thumbnail center"><h1 class="bold">Podcasts Subscribed</h1></div>
+      	<div class="thumbnail center"><h1 class="bold">Podcasts Subscribed</h1></div>
 			<div class="row" id="podcast"></div>
 		</div>
 	<div class="notification"></div>
@@ -113,17 +113,19 @@ if (!isset($_COOKIE['tljusername'])) {
 					display = display + '<div class="col-md-4">';
 						display = display + '<div class="thumbnail">';
 							display = display + '<a href="../podcast/podcast.php?i='+ rss +'">';
-							display = display + '<h1 class="ellipsis center bold">' + (i+1) + '</h1>';
-							display = display + '<div class="caption">';
-								display = display + '<h3 class="ellipsis center">' + name + '</h1>';
-							display = display + '</div>';
+								display = display + '<h1 class="ellipsis center bold">' + (i+1) + '</h1>';
+								display = display + '<div class="caption">';
+									display = display + '<h3 class="ellipsis center">' + name + '</h1>';
+								display = display + '</div>';
+								display = display + '<div class="row"></div>';
 							display = display + '</a>';
-							display = display + '<div class="row"><button class="btn btn-danger full-width bold" id="unsubscribe" >Unsubscribe</button></div>'
+							display = display + '<div class="row"><button data-url="'+ rss +'" class="btn btn-danger full-width bold" id="unsubscribe">Unsubscribe</button></div>'
 						display = display + '</div>';
 					display = display + '</div>';
 				}
 			}
 			$('#podcast').html(display);
+			getUpdates();
 		});
 	}
 
@@ -143,7 +145,18 @@ if (!isset($_COOKIE['tljusername'])) {
 				}
 			});
     }
-  });
+  	});
+
+  	function getUpdates() {
+	$('.btn-danger').each(function( index ) {
+		rss = $( this ).attr('data-url');
+		$.getJSON('http://ajax.googleapis.com/ajax/services/feed/load?v=2.0&q='+rss+'&num=1', function(json, textStatus) {
+  			title = json.responseData.feed.entries[0].title;
+  			publishedDate = json.responseData.feed.entries[0].publishedDate;
+  			$(this).parent().parent().children('a').first().children('div.row').first().html('<h3>'+title+'</h3><h4>'+publishedDate+'</h4>');
+  		});
+	});
+  	}
 	</script>
 </body>
 </html>
