@@ -9,7 +9,6 @@ if ($email) {
 		$num = mysql_num_rows($query);
 		echo "{";
 		echo '"status":1,';
-		echo '"total":"'.$total.'",';
 		echo '"music":[';
 		for ($i=0; $i < $num; $i++) {
 			$info = mysql_fetch_array($query);

@@ -117,9 +117,9 @@ if (!isset($_COOKIE['tljusername'])) {
 								display = display + '<div class="caption">';
 									display = display + '<h3 class="ellipsis center">' + name + '</h1>';
 								display = display + '</div>';
-								display = display + '<div class="row"></div>';
+								// display = display + '';
 							display = display + '</a>';
-							display = display + '<div class="row"><button data-url="'+ rss +'" class="btn btn-danger full-width bold" id="unsubscribe">Unsubscribe</button></div>'
+							display = display + '<div class="row"><div class="thumbnail"></div><button data-url="'+ rss +'" class="btn btn-danger full-width bold" id="unsubscribe">Unsubscribe</button></div>'
 						display = display + '</div>';
 					display = display + '</div>';
 				}
@@ -133,29 +133,34 @@ if (!isset($_COOKIE['tljusername'])) {
 	$(document).click(function(e) {
     $id = $(e.target).attr('id');
     if ($id == 'unsubscribe') {
-			rss = $(e.target).parent().parent().children('a').first().attr('href');
-			rss = rss.split("=")[1];
-			$(".notification").text('Loading...').show(100);
-			$.getJSON('../api/podcast/podcast.unsubscribe.php?apikey=tejpratap&rss='+ rss +'&email=' + <?php echo "'".$_COOKIE['tljusername']."'" ?>, function(json, textStatus) {
-				if(json.status == 1){
-					$(e.target).parent().parent().parent().html('');
-					$(".notification").text('Removed').delay(1000).hide(100);
-				}else{
-					$(".notification").text('Error : ' + json.error).delay(3000).hide(100);
-				}
-			});
+		rss = $(e.target).parent().parent().children('a').first().attr('href');
+		rss = rss.split("=")[1];
+		$(".notification").text('Loading...').show(100);
+		$.getJSON('../api/podcast/podcast.unsubscribe.php?apikey=tejpratap&rss='+ rss +'&email=' + <?php echo "'".$_COOKIE['tljusername']."'" ?>, function(json, textStatus) {
+			if(json.status == 1){
+				$(e.target).parent().parent().parent().html('');
+				$(".notification").text('Removed').delay(1000).hide(100);
+			}else{
+				$(".notification").text('Error : ' + json.error).delay(3000).hide(100);
+			}
+		});
     }
   	});
 
   	function getUpdates() {
-	$('.btn-danger').each(function( index ) {
-		rss = $( this ).attr('data-url');
-		$.getJSON('http://ajax.googleapis.com/ajax/services/feed/load?v=2.0&q='+rss+'&num=1', function(json, textStatus) {
-  			title = json.responseData.feed.entries[0].title;
-  			publishedDate = json.responseData.feed.entries[0].publishedDate;
-  			$(this).parent().parent().children('a').first().children('div.row').first().html('<h3>'+title+'</h3><h4>'+publishedDate+'</h4>');
-  		});
-	});
+  		$(".notification").text('Loading...').show(100);
+  		i = 0;
+  		btn = new Array();
+		$('.btn-danger').each(function( index ) {
+			btn[index] = $(this);
+			rss = $(btn[index]).attr('data-url');
+			$.getJSON('../podcast/ajax/rssupdates.php?rss='+rss, function(json, textStatus) {
+	  			title = json.responseData.feed.entries[0].title;
+	  			publishedDate = json.responseData.feed.entries[0].publishedDate;
+	  			$(btn[i++]).parent().children('div').first().html('<h4 class="bold">' + title + ',<br /> On'  + publishedDate + '</h4>');
+	  		});
+		});
+	$(".notification").hide(100);
   	}
 	</script>
 </body>

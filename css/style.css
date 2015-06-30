@@ -64,11 +64,18 @@
 }
 
 .bottom {
-	bottom: 10px;
+	bottom: 0px;
+	position: fixed;
+	z-index: 10;
 }
 
 .white {
-	color: white;
+	color: #FFFFFF;
+}
+
+.round-button {
+    border-radius: 50%;
+    overflow:hidden;
 }
 
 .ellipsis {
@@ -91,6 +98,5 @@
 	z-index: 10;
 	text-align: center;
 	border-radius: 2px;
-	text-align: center;
 	display: none;
 }

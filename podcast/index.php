@@ -11,7 +11,7 @@ error_reporting ( 0 );
 <meta name="author" content="">
 <link rel="shortcut icon" type="image/png" href="../favicon.png"/>
 
-<title>Tv List</title>
+<title>Podcast List</title>
 
 <!-- Bootstrap core CSS -->
 <link href="../css/bootstrap.min.css" rel="stylesheet">

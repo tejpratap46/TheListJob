@@ -106,13 +106,6 @@ error_reporting ( 0 );
 	        results = regex.exec(location.search);
 	    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 	}
-  pg = 1;
-  $(window).scroll(function() {
-	   if($(window).scrollTop() + $(window).height() == $(document).height()) {
-		   pg = pg + 25;
-       ajaxCall(pg);
-	   }
-	});
 
 	function ajaxCall(p){
 		$("#loading").toggle(100);

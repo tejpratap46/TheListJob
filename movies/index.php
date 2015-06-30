@@ -76,6 +76,8 @@ error_reporting ( 0 );
 			<p>Movies Waiting For You.</p>
 		</div>
 
+		<div class="row thumbnail" id="trailers"></div>
+
 		<div class="btn-group btn-group-justified">
 		  <a href="#categories" class="btn btn-primary bold">Categories</a>
 		  <a href="#genres" class="btn btn-danger bold">Genres</a>
@@ -88,6 +90,7 @@ error_reporting ( 0 );
 			</div>
 		</div>
 	</div>
+	<div class="notification"></div>
 	<!-- /container -->
 	<!-- Bootstrap core JavaScript
     ================================================== -->
@@ -98,15 +101,21 @@ error_reporting ( 0 );
 
 	<script type="text/javascript">
 	setTimeout(function () {
-	var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-        	document.getElementById("items").innerHTML = xmlhttp.responseText;
-        }
-    }
-    xmlhttp.open("GET", "ajax/lists.php", true);
-    xmlhttp.send();
+		getLists();
+		getTrailers();
 	}, 50);
+
+	function getLists (argument) {
+		$('#items').load('ajax/lists.php', function(){
+		});
+	}
+
+	function getTrailers () {
+		$('.notification').text('Loading...').show('fast');
+		$('#trailers').load('ajax/youtubeplaylist.php', function(){
+			$('.notification').hide('fast');
+		});
+	}
 	</script>
 </body>
 </html>

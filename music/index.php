@@ -76,6 +76,9 @@ error_reporting ( 0 );
 			<p>Music We All Love.</p>
 		</div>
 
+		<div class="row thumbnail">
+			<a href="player.php" class="btn btn-primary full-width">Playlist Player</a>
+		</div>
 
 		<div class="btn-group btn-group-justified">
 			<a href="#tracks" class="btn btn-primary bold">Tracks</a>

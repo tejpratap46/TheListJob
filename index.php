@@ -61,7 +61,7 @@ error_reporting ( 0 );
 					echo "</ul>";
 					echo "</li>";
 				} else {
-					echo '<a type="button" class="btn btn-default navbar-btn" href="login.php">Sign in</a>';
+					echo '<a type="button" class="btn btn-default navbar-btn full-width" href="login.php">Sign in</a>';
 				}
 				?>
 				</ul>

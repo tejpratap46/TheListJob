@@ -34,7 +34,7 @@ for($i = 0; $i < count ( $results ); $i ++) {
 						<audio style="width: 100%;" controls="controls" preload="none">
 							<source src="' . $results [$i] ['track'] . '">
 						</audio>
-						<button id="" class="btn btn-primary full-width" onclick"addToPlaylist(\''.$results [$i] ['title'].'\',\''.$results [$i] ['track'].'\')">Add To Playlist</button>
+						<button id="addtoplaylist" class="btn btn-primary full-width" data-img="'.$results [$i] ['img'].'" data-name="'.$results [$i] ['title'].'" data-url="'.$results [$i] ['track'].'" >Add To Playlist</button>
 					</div>
 				</div>';
 	if ($i % 4 == 3) {
