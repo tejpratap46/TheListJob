@@ -3,7 +3,7 @@ error_reporting ( 0 );
 include '../../TMDb.php';
 
 $tmdb = new TMDb ( 'c2c73ebd1e25cbc29cf61158c04ad78a' );
-$config = $tmdb->getConfig ();
+// $config = $tmdb->getConfig ();
 $Movies = $tmdb->getTvByGenre( $_GET ['i'] );
 for($i = 0; $i < count ( $Movies ['results'] ); $i ++) {
 	if ($i % 4 == 0) {

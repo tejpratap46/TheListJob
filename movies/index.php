@@ -76,7 +76,7 @@ error_reporting ( 0 );
 			<p>Movies Waiting For You.</p>
 		</div>
 
-		<div class="row thumbnail" id="trailers"></div>
+		<div class="well" id="trailers"></div>
 
 		<div class="btn-group btn-group-justified">
 		  <a href="#categories" class="btn btn-primary bold">Categories</a>

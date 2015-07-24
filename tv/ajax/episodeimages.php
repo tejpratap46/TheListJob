@@ -3,7 +3,7 @@ error_reporting ( 0 );
 include '../../TMDb.php';
 
 $tmdb = new TMDb ( 'c2c73ebd1e25cbc29cf61158c04ad78a' );
-$config = $tmdb->getConfig ();
+// $config = $tmdb->getConfig ();
 if ($_GET ['i'] && $_GET ['s'] && $_GET ['e']) {
 	$Images = $tmdb->getTvEpisodeImages ( $_GET ['i'], $_GET ['s'], $_GET ['e'] );
 	for($i = 0; $i < count ( $Images ['stills'] ); $i ++) {

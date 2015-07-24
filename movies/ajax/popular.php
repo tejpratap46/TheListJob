@@ -3,7 +3,7 @@
 include '../../TMDb.php';
 
 $tmdb = new TMDb ( 'c2c73ebd1e25cbc29cf61158c04ad78a' );
-$config = $tmdb->getConfig ();
+// $config = $tmdb->getConfig ();
 if ($_GET ['p'])
 	$Movies = $tmdb->getPopularMovies ( $_GET ['p'] );
 else

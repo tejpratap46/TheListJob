@@ -15,6 +15,6 @@ if ($email && $password) {
 		die('{"status":0,"error":"Invalid email Or password"}');
 	}
 }else{
-	die('{"status":0,"error":"'.mysql_error().'"}');
+	die('{"status":0,"error":"Enter email, password"}');
 }
 ?>

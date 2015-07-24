@@ -31,6 +31,6 @@ if ($email && $password) {
 		die('{"status":0,"error":"Email already used"}');
 	}
 }else{
-	die('{"status":0,"error":"'.mysql_error().'"}');
+	die('{"status":0,"error":"Enter email, password"}');
 }
 ?>

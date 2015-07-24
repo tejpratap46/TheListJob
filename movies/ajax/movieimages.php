@@ -3,7 +3,7 @@
 include '../../TMDb.php';
 
 $tmdb = new TMDb ( 'c2c73ebd1e25cbc29cf61158c04ad78a' );
-$config = $tmdb->getConfig (); 
+// $config = $tmdb->getConfig (); 
 if ($_GET ['i']) {
 	$Images = $tmdb->getMovieImages ( $_GET ['i'] );
 	// echo json_encode($Images);

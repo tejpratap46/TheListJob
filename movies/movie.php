@@ -75,7 +75,7 @@ error_reporting ( 0 );
 
 	<div class="container" style="width: 100%;">
 		<div class="jumbotron no-padding">
-			<div class="row" id="imgs"></div>
+			<div class="row" id="casts"></div>
 		</div>
 		<div class="jumbotron no-padding">
 			<div class="row" id="items"></div>
@@ -156,24 +156,24 @@ error_reporting ( 0 );
 		});
 	}
 
-	var imgs = false;
+	var casts = false;
 	var sim = false;
 
 	$(window).scroll(function() {
 	   if($(window).scrollTop() + $(window).height() == $(document).height()) {
-			   if(!imgs){
+			   if(!casts){
 			   var i = getParameterByName('i');
 			   $('.notification').toggle();
 				var xmlhttp = new XMLHttpRequest();
 			    xmlhttp.onreadystatechange = function() {
 			        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			        	$('.notification').toggle();
-			        	document.getElementById("imgs").innerHTML = xmlhttp.responseText;
+			        	document.getElementById("casts").innerHTML = xmlhttp.responseText;
 			        }
 			    }
-			    xmlhttp.open("GET", "ajax/movieimages.php?i=" + i, true);
+			    xmlhttp.open("GET", "ajax/moviecast.php?i=" + i, true);
 			    xmlhttp.send();
-			    imgs = true;
+			    casts = true;
 		   }else if(!sim){
 		   	var i = getParameterByName('i');
 			   $('.notification').toggle();

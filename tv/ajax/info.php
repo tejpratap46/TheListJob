@@ -3,7 +3,7 @@ error_reporting ( 0 );
 include '../../TMDb.php';
 
 $tmdb = new TMDb ( 'c2c73ebd1e25cbc29cf61158c04ad78a' );
-$config = $tmdb->getConfig ();
+// $config = $tmdb->getConfig ();
 if ($_GET ['i']) {
 	$Movie = $tmdb->getTv ( $_GET ['i'] );
 	echo '<div class="thumbnail center">
@@ -36,19 +36,19 @@ if ($_GET ['i']) {
 
 		<div class="row">
 			<div class="col-md-6">
-				<button type="button" id="add" class="btn btn-lg btn-success full-width bottom" onclick=\'addToList("' . str_replace("'","",$Movie ['name']) . '","' . $Movie ['id'] . '")\'>Add To TO-DO</button>
-				<button type="button" id="remove" class="btn btn-lg btn-danger full-width bottom" onclick=\'removeFromTodo("' . $Movie ['id'] . '")\' style="display: none;">Remove From TO-DO</button>
+				<button type="button" id="add" class="btn btn-lg btn-success full-width" onclick=\'addToList("' . str_replace("'","",$Movie ['name']) . '","' . $Movie ['id'] . '")\'>Add To TO-DO</button>
+				<button type="button" id="remove" class="btn btn-lg btn-danger full-width" onclick=\'removeFromTodo("' . $Movie ['id'] . '")\' style="display: none;">Remove From TO-DO</button>
 			</div>
 			<div class="col-md-6">
-				<button type="button" class="btn btn-lg btn-primary full-width bottom" onclick="getTrailer()">Trailer</button>
+				<button type="button" class="btn btn-lg btn-primary full-width" onclick="getTrailer()">Trailer</button>
 			</div>
 		</div>
 
 		<hr>		
-		<div id="quick_info" class="row thumbnail"></div>
+		<div id="quick_info" class="thumbnail"></div>
 
 		<div id="trailer"></div>
-		<div class="jumbotron no-padding">
+		<div class="row jumbotron no-padding">
 			<div class="row">
 				<div class="col-md-12">
 					<h1 class="center-vertical bold">Plot</h1><br />
@@ -58,26 +58,26 @@ if ($_GET ['i']) {
 		</div>
 		<div class="jumbotron no-padding">
 			<h1 class="bold">Seasons<h1>';
-	getSeasons ( $Movie );
-	echo '</div>
-		<div class="jumbotron no-padding">
-			<div class="row">
-				<div class="col-md-3">
-					<h1 class="center-vertical ellipsis bold">Genre</h1><br />';
-	getGenre ( $Movie );
-	echo '</div>
-				<div class="col-md-3">
-				<h1 class="center-vertical ellipsis bold">Production</h1><br />';
-	getProduction ( $Movie );
-	echo '</div>
-				<div class="col-md-3">
-				<h1 class="center-vertical ellipsis bold">On & In</h1><br />';
-	getNetwork ( $Movie );
-	echo '</div>
-				<div class="col-md-3">
-				<h1 class="center-vertical ellipsis bold">Extra</h1><br />';
-	getExtra ( $Movie );
-	echo '</div>
+			getSeasons ( $Movie );
+			echo '</div>
+				<div class="jumbotron">
+					<div class="row">
+						<div class="col-md-3">
+							<h1 class="center-vertical ellipsis bold">Genre</h1><br />';
+			getGenre ( $Movie );
+			echo '</div>
+						<div class="col-md-3">
+						<h1 class="center-vertical ellipsis bold">Production</h1><br />';
+			getProduction ( $Movie );
+			echo '</div>
+						<div class="col-md-3">
+						<h1 class="center-vertical ellipsis bold">On & In</h1><br />';
+			getNetwork ( $Movie );
+			echo '</div>
+						<div class="col-md-3">
+						<h1 class="center-vertical ellipsis bold">Extra</h1><br />';
+			getExtra ( $Movie );
+			echo '</div>
 			</div>
 		</div>';
 }
