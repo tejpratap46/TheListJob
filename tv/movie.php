@@ -74,9 +74,12 @@ error_reporting ( 0 );
 	</div>
 
 	<div class="container" style="width: 100%;">
-	<div class="jumbotron">
-		<div class="row" id="items"></div>
-	</div>
+		<div class="jumbotron no-padding">
+			<div class="row" id="cast"></div>
+		</div>
+		<div class="jumbotron no-padding">
+			<div class="row" id="items"></div>
+		</div>
 	</div>
 
 	<div class='notification' style='display: none'>Loading...</div>
@@ -182,23 +185,37 @@ error_reporting ( 0 );
 	}
 
 	var sim = false;
+	var cast = false;
 
 	$(window).scroll(function() {
 	   if($(window).scrollTop() + $(window).height() == $(document).height()) {
-		   if(!sim){
-		   var i = getParameterByName('i');
-		   $('.notification').toggle();
-			var xmlhttp = new XMLHttpRequest();
-		    xmlhttp.onreadystatechange = function() {
-		        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-		        	$('.notification').toggle();
-		        	document.getElementById("items").innerHTML = xmlhttp.responseText;
-		        }
-		    }
-		    xmlhttp.open("GET", "ajax/similar.php?i=" + i, true);
-		    xmlhttp.send();
-		    sim = true;
-	   }
+		   	if (!cast) {
+		   		var i = getParameterByName('i');
+			   $('.notification').show(100);
+				var xmlhttp = new XMLHttpRequest();
+			    xmlhttp.onreadystatechange = function() {
+			        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			        	$('.notification').hide(100);
+			        	document.getElementById("cast").innerHTML = xmlhttp.responseText;
+			        }
+			    }
+			    xmlhttp.open("GET", "ajax/cast.php?i=" + i, true);
+			    xmlhttp.send();
+			    cast = true;
+		   	}else if(!sim){
+			   var i = getParameterByName('i');
+			   $('.notification').show(100);
+				var xmlhttp = new XMLHttpRequest();
+			    xmlhttp.onreadystatechange = function() {
+			        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			        	$('.notification').hide(100);
+			        	document.getElementById("items").innerHTML = xmlhttp.responseText;
+			        }
+			    }
+			    xmlhttp.open("GET", "ajax/similar.php?i=" + i, true);
+			    xmlhttp.send();
+			    sim = true;
+		   }
 	   }
 	});
 	</script>

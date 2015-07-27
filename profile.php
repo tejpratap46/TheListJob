@@ -76,7 +76,7 @@ if (!isset($_COOKIE['tljusername'])) {
 	<div class="container" style="width: 100%; margin-top: 50px;">
 		<!-- Main component for a primary marketing message or call to action -->
 		<div class="alert alert-success center">
-			<h1 class="bold" style="color: white;"><?php echo $_COOKIE['tljusername']; ?></h1>
+			<h1 class="bold ellipsis" style="color: white;"><?php echo $_COOKIE['tljusername']; ?></h1>
 			<p>Great Stuff To Do Next Only For You.</p>
 		</div>
 

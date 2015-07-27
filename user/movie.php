@@ -110,10 +110,13 @@ if (!isset($_COOKIE['tljusername'])) {
 					var m = "<div>" + movies[i] + "</div>";
 					name = $(m).children('name').first().text();
 					id = $(m).children('id').first().text();
+					imdbId = $(m).children('imdbId').first().text();
+					img = $(m).find('images').first().text();
 					display = display + '<div class="col-md-3">';
 						display = display + '<div class="thumbnail">';
 							display = display + '<a href="../movies/movie.php?i='+ id +'">';
-							display = display + '<h1 class="ellipsis center bold">' + (i+1) + '</h1>';
+							// display = display + '<h1 class="ellipsis center bold">' + (i+1) + '</h1>';
+							display = display + '<img src="http://image.tmdb.org/t/p/w300' + img + '" ></img>';
 							display = display + '<div class="caption">';
 								display = display + '<h3 class="ellipsis">' + name + '</h1>';
 							display = display + '</div>';
@@ -123,9 +126,13 @@ if (!isset($_COOKIE['tljusername'])) {
 					display = display + '</div>';
 				}
 			}else{
-        $(".notification").hide(100);
-      }
-			$('#movies').html(display);
+        		$(".notification").hide(100);
+      		}
+      		$pre = $('#movies').html();
+			$('#movies').html($pre + display);
+		})
+		.error(function() {
+			$(".notification").hide(100);
 		});
 	}
 

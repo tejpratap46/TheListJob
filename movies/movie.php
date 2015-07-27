@@ -125,9 +125,9 @@ error_reporting ( 0 );
 	    xmlhttp.send();
 	}
 
-	function addToList (name, id) {
+	function addToList (name, id, imdbId, image) {
 		$('.notification').text('Loading...').show();
-		$.getJSON('../api/movie/movie.addtodo.php?apikey=tejpratap&email=' + <?php echo "'".$_COOKIE['tljusername']."'"; ?> + '&name=' + name + '&id=' + id, function(json, textStatus) {
+		$.getJSON('../api/movie/movie.addtodo.php?apikey=tejpratap&email=' + <?php echo "'".$_COOKIE['tljusername']."'"; ?> + '&name=' + name + '&id=' + id + '&imdbId=' + imdbId + '&image=' + image, function(json, textStatus) {
 			$('.notification').hide();
 			if(json.status == 1){
 				$('.notification').text('Added').show(200).delay(3000).hide(200);
@@ -161,7 +161,7 @@ error_reporting ( 0 );
 
 	$(window).scroll(function() {
 	   if($(window).scrollTop() + $(window).height() == $(document).height()) {
-			   if(!casts){
+			if(!casts){
 			   var i = getParameterByName('i');
 			   $('.notification').toggle();
 				var xmlhttp = new XMLHttpRequest();

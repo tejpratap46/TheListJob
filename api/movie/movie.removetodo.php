@@ -7,7 +7,7 @@ $id = $_GET['id'];
 if ($email && $id) {
 	$queryCheck = mysql_query("SELECT id FROM `". md5($email) ."` WHERE `movieTodo` LIKE '%" . $id . "%'") or die('{"status":0,"error":"'.mysql_error().'"}');
 	if (mysql_num_rows($queryCheck) == 0) {
-		die('{"status":0,"error":"Already In Your Watchlist"}');
+		die('{"status":0,"error":"Already Removed From Your Watchlist"}');
 	}
 
 	$qArray = mysql_fetch_array($queryCheck);
@@ -22,7 +22,7 @@ if ($email && $id) {
 		echo '"id":"'.$id.'"';
 		echo "}";
 	}else{
-		die('{"status":0,"error":"Cannot Subscribe"}');
+		die('{"status":0,"error":"Cannot Remove"}');
 	}
 }else{
 	die('{"status":0,"error":"'.mysql_error().'"}');

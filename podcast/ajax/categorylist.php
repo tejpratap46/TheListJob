@@ -17,11 +17,11 @@ for($i = 0; $i < count ( $results ); $i ++) {
 	}
 	echo '<div class="col-sm-6 col-md-3">
 					<div class="thumbnail">
-						<a href="category.php?i='. $results [$i] ['category_id'] .'"><img style="width: 100%;" src="' . $results [$i] ['img'] . '" alt="' . $results [$i] ['title'] . '" hidden></a>
+						<a href="category.php?i='. $results [$i] ['category_id'] .'"><img style="width: 100%;" src="' . $results [$i] ['img'] . '" alt="' . $results [$i] ['title'] . '" hidden>
 						<div class="caption">
 							<h2 class="center ellipsis">' . $results [$i] ['title'] . '</h2>
 							<p class="center ellipsis">' . $results [$i] ['text'] . '</p>
-						</div>
+						</div></a>
 					</div>
 				</div>';
 	if ($i % 4 == 3) {

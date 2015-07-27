@@ -14,7 +14,7 @@ if ($_GET ['i'] && $_GET ['s']) {
 				</div>
 				<div class="col-md-10 center">
 					<h1 class="ellipsis">' . $Movie ['name'] . '</h1>
-					<button type="button" class="btn btn-lg btn-primary full-width bottom" onclick="getTrailer()">Trailer</button>
+					<button type="button" class="btn btn-lg btn-primary full-width" onclick="getTrailer()">Trailer</button>
 				</div>
 			</div>
 		</div>
