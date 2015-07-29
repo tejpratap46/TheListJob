@@ -875,6 +875,20 @@ class TMDb {
 		);
 		return $this->_makeCall ( 'person/changes', $params );
 	}
+
+	/**
+	 * Retrieve all popular persons
+	 *
+	 * @param int $page
+	 *        	of the page with results (default first page)
+	 * @return TMDb result array
+	 */
+	public function getPopularPersons($page = 1) {
+		$params = array (
+				'page' => ( int ) $page
+		);
+		return $this->_makeCall ( 'person/popular', $params );
+	}
 	
 	/**
 	 * Retrieve all basic information for a particular production company

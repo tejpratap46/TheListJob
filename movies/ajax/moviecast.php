@@ -14,11 +14,13 @@ if ($_GET ['i']) {
 		}
 		echo '<div class="col-sm-2">
 					<div class="thumbnail">
-						<img style="width: 100%;" src="http://image.tmdb.org/t/p/w185' . $Movies ['cast'] [$i] ['profile_path'] . '" alt="' . $Movies ['cast'] [$i] ['original_title'] . '">
-						<div class="caption">
-							<h3 class="center ellipsis" title="' . $Movies ['cast'] [$i] ['name'] . '">' . $Movies ['cast'] [$i] ['name'] . '</h3>
-							<p class="center ellipsis">As ' . $Movies ['cast'] [$i] ['character'] . '</p>
-						</div>
+						<a href="../people/people.php?i='.$Movies ['cast'] [$i] ['id'].'">
+							<img style="width: 100%;" src="http://image.tmdb.org/t/p/w185' . $Movies ['cast'] [$i] ['profile_path'] . '" alt="' . $Movies ['cast'] [$i] ['original_title'] . '">
+							<div class="caption">
+								<h3 class="center ellipsis" title="' . $Movies ['cast'] [$i] ['name'] . '">' . $Movies ['cast'] [$i] ['name'] . '</h3>
+								<p class="center ellipsis">As ' . $Movies ['cast'] [$i] ['character'] . '</p>
+							</div>
+						</a>
 					</div>
 				</div>';
 		if ($i % 6 == 5 || $i==$count-1) {

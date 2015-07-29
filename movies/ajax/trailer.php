@@ -8,7 +8,7 @@ if ($_GET ['i']) {
 	$Trailer = $tmdb->getMovieTrailers ( $_GET ['i'] );
 	echo '<div class="embed-responsive embed-responsive-16by9">
 		<iframe class="embed-responsive-item" 
-			src="http://www.youtube.com/embed/' . $Trailer ['youtube'] [0] ['source'] . '?autoplay=1"  frameborder="0" allowfullscreen />
+			src="http://www.youtube.com/embed/' . $Trailer ['youtube'] [0] ['source'] . '?autoplay=1" frameborder="0" allowfullscreen />
 		</div>';
 }
 ?>
