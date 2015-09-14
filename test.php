@@ -12,6 +12,4 @@
     <h1 id="h01"></h1>
 </div>
 </body>
-<body>
-</body>
 </html> 

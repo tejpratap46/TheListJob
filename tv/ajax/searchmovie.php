@@ -4,7 +4,7 @@ include '../../TMDb.php';
 if ($_GET ['q']) {
 	$tmdb = new TMDb ( 'c2c73ebd1e25cbc29cf61158c04ad78a' );
 	// $config = $tmdb->getConfig ();
-	$Movies = $tmdb->searchTv ( $_GET ['q'] );
+	$Movies = $tmdb->searchTv ( $_GET ['q'], $_GET ['p'] );
 	for($i = 0; $i < count ( $Movies ['results'] ); $i ++) {
 		if ($i % 4 == 0) {
 			echo '<div class="row">';

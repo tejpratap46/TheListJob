@@ -38,7 +38,7 @@ error_reporting ( 0 );
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="../">Home</a></li>
-					<li class="active"><a href="../movies">Movies</a></li>
+					<li><a href="../movies">Movies</a></li>
 					<li><a href="../tv">Tv Shows</a></li>
 					<li><a href="../music">Music</a></li>
 					<li><a href="../podcast">Podcast</a></li>

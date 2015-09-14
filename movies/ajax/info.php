@@ -92,8 +92,8 @@ function getCountries($Movie) {
 }
 function getExtra($Movie) {
 	echo '<h3>' . $Movie ['runtime'] . 'min</h3>';
-	echo '<h3>' . $Movie ['budget'] . '$ spent</h3>';
-	echo '<h3>' . $Movie ['revenue'] . '$ revenue</h3>';
+	echo '<h3>Spent : $' . $Movie ['budget'] . '</h3>';
+	echo '<h3>Revenue : $' . $Movie ['revenue'] . '</h3>';
 	echo '<a href ="' . $Movie ['homepage'] . '"><h3 class="bold">Website</h3></a>';
 }
 ?>

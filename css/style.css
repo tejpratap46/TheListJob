@@ -16,6 +16,11 @@
 	display: none;
 }
 
+.search {
+	padding: 20px;
+	font-size: 3em;
+}
+
 .height-30px {
 	height: 30px;
 }

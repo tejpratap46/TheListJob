@@ -7,7 +7,7 @@ $title = array (
 		"Up Coming",
 		"Now Playing",
 		"IMDB Top 250",
-		"Discover"
+		"Highest Revenue"
 );
 $url = array (
 		"toprated",

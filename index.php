@@ -42,12 +42,11 @@ error_reporting ( 0 );
 					<li><a href="tv">Tv Shows</a></li>
 					<li><a href="music">Music</a></li>
 					<li><a href="podcast">Podcast</a></li>
-					<!-- 					<form class="navbar-form navbar-left" role="search"> -->
-					<!-- 						<div class="form-group"> -->
-					<!-- 							<input type="text" class="form-control" placeholder="Search"> -->
-					<!-- 						</div> -->
-					<!-- 						<button type="submit" class="btn btn-default">Search</button> -->
-					<!-- 					</form> -->
+					<form class="navbar-form navbar-left" role="search" action="search.php">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Search Anything" name="q" value="">
+						</div>
+					</form>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 				<?php
@@ -72,47 +71,62 @@ error_reporting ( 0 );
 
 	<div class="container" style="width: 100%; margin-top: 50px;">
 		<!-- Main component for a primary marketing message or call to action -->
-		<div class="alert alert-success center">
-			<h1 class="bold" style="color: white;">The List Job</h1>
-			<p>Great Stuff To Do Next.</p>
+		<!-- <div class="alert alert-success center"> -->
+			<!-- <h1 class="bold" style="color: white;">The List Job</h1>  -->
+			<!-- <p>Great Stuff To Do Next.</p> -->
+		<!-- </div> -->
+		<div class="row">
+			<blockquote>
+				<form role="search" action="search.php">
+					<input type="text" class="form-control" placeholder="Search Anything" name="q" value="">
+				</form>
+			</blockquote>
 		</div>
 		<div>
 			<div class="row">
 				<div class="col-sm-6 col-md-3">
-					<a href="movies"><div class="thumbnail">
-						<img style="width: 100%;" src="images/movie-512.png" alt="Movies">
-						<div class="caption">
-							<h2 class="center">Movie Lists</h2>
-							<p class="center ellipsis">Collection Of Awsome Movie List For You.</p>
+					<a href="movies">
+						<div class="thumbnail">
+							<img style="width: 100%;" src="images/movie-512.png" alt="Movies">
+							<div class="caption">
+								<h2 class="center">Movie Lists</h2>
+								<p class="center ellipsis">Collection Of Awsome Movie List For You.</p>
+							</div>
 						</div>
-					</div></a>
+					</a>
 				</div>
 				<div class="col-sm-6 col-md-3">
-					<a href="tv"><div class="thumbnail">
-						<img style="width: 100%;" src="images/tv-512.png" alt="TV Show">
-						<div class="caption">
-							<h2 class="center">Tv Shows</h2>
-							<p class="center ellipsis">Collection Of Awsome Tv Shows For You.</p>
+					<a href="tv">
+						<div class="thumbnail">
+							<img style="width: 100%;" src="images/tv-512.png" alt="TV Show">
+							<div class="caption">
+								<h2 class="center">Tv Shows</h2>
+								<p class="center ellipsis">Collection Of Awsome Tv Shows For You.</p>
+							</div>
 						</div>
-					</div></a>
+					</a>
 				</div>
 				<div class="col-sm-6 col-md-3">
-					<a href="music"><div class="thumbnail">
-						<img style="width: 100%;" src="images/music-512.png" alt="Music">
-						<div class="caption">
-							<h2 class="center">Music Lists</h2>
-							<p class="center ellipsis">Collection Of Awsome Music For You.</p>
+					<a href="music">
+						<div class="thumbnail">
+							<img style="width: 100%;" src="images/music-512.png" alt="Music">
+							<div class="caption">
+								<h2 class="center">Music Lists</h2>
+								<p class="center ellipsis">Collection Of Awsome Music For You.</p>
+							</div>
 						</div>
-					</div></a>
+					</a>
 				</div>
 				<div class="col-sm-6 col-md-3">
-					<a href="podcast"><div class="thumbnail">
-						<img style="width: 100%;" src="images/podcast-512.png" alt="Podcast">
-						<div class="caption">
-							<h2 class="center">Podcast Lists</h2>
-							<p class="center ellipsis">Collection Of Awsome Podcasts For You.</p>
+					<a href="podcast">
+						<div class="thumbnail">
+							<img style="width: 100%;" src="images/podcast-512.png" alt="Podcast">
+							<div class="caption">
+								<h2 class="center">Podcast Lists</h2>
+								<p class="center ellipsis">Collection Of Awsome Podcasts For You.</p>
+							</div>
 						</div>
-					</div></a>
+					</a>
 				</div>
 			</div>
 		</div>

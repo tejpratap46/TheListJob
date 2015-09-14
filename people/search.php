@@ -11,7 +11,7 @@ error_reporting ( 0 );
 <meta name="author" content="">
 <link rel="shortcut icon" type="image/png" href="../favicon.png"/>
 
-<title>People</title>
+<title>Celeb List</title>
 
 <!-- Bootstrap core CSS -->
 <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -72,8 +72,8 @@ error_reporting ( 0 );
 	<div class="container" style="width: 100%; margin-top: 70px;">
 		<!-- Main component for a primary marketing message or call to action -->
 		<div class="thumbnail center">
-			<h1 class="bold">People</h1>
-			<p>Popular celebs are here.</p>
+			<h1 class="bold">Celeb Lists</h1>
+			<p>Celebs You Love.</p>
 		</div>
 		<div class="jumbotron">
 			<div class="row" id="items"></div>
@@ -94,6 +94,7 @@ error_reporting ( 0 );
 	<script src="../js/bootstrap.min.js"></script>
 
 	<script type="text/javascript">
+	var q = getParameterByName('q');
 	var pg = 1;
 	setTimeout(function () {
 		$("#loading").toggle(100);
@@ -113,7 +114,7 @@ error_reporting ( 0 );
 		   ajaxCall(pg);
 	   }
 	});
-
+	
 	function ajaxCall(p){
 		$("#loading").toggle(100);
 		var xmlhttp = new XMLHttpRequest();
@@ -124,7 +125,7 @@ error_reporting ( 0 );
 	        	$("#loading").toggle(100);
 	        }
 	    }
-	    xmlhttp.open("GET", "ajax/popular.php?p=" + p, true);
+	    xmlhttp.open("GET", "ajax/searchpeople.php?q=" + q + "&p=" + p, true);
 	    xmlhttp.send();
 	}
 	</script>

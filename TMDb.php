@@ -303,9 +303,10 @@ class TMDb {
 	 *        	the result with a language (ISO 3166-1) other then default, use FALSE to retrieve results from all languages
 	 * @return TMDb result array
 	 */
-	public function getDiscoverMovies($page = 1, $lang = NULL) {
+	public function getDiscoverMovies($page = 1, $sortBy = 'revenue.desc', $lang = NULL) {
 		$params = array (
 				'page' => ( int ) $page,
+				'sort_by' => $sortBy,
 				'language' => ($lang !== NULL) ? $lang : $this->getLang () 
 		);
 		return $this->_makeCall ( 'discover/movie', $params );
